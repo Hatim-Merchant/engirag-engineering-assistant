@@ -1,12 +1,12 @@
 # EngiRAG Architecture Overview
 
-> Status: **Phases 1–3** completed (Infrastructure + Document Ingestion + Retrieval, LLM & `POST /ask` API). Phases 4–5 will add the Vue 3 SPA and retrieval evaluation benchmarks.
+> Status: **Phases 1–4** completed (Infrastructure + Document Ingestion + Retrieval, LLM & `POST /ask` API + Vue 3 SPA). Phase 5 will add retrieval evaluation benchmarks (`Hit@k` / `MRR`).
 
 ## System Architecture
 
 ```mermaid
 flowchart LR
-  User["User (Browser)"] -->|"Vue 3 SPA (Phase 4)"| API["NestJS REST API"]
+  User["User (Browser)"] -->|"Vue 3 SPA (Vite)"| API["NestJS REST API"]
   API -->|"GET /health"| Health["HealthModule"]
   API -->|"POST /ask"| RAG["RagService"]
   RAG -->|"Embed query (384d)"| Emb["EmbeddingProvider (Transformers.js)"]
@@ -34,3 +34,9 @@ flowchart LR
 1. **Threshold + Top-K Cosine Retrieval (`1 - (embedding <=> $1::vector)`)**: Filtering by `RETRIEVAL_MIN_SCORE` prevents unrelated queries from forcing low-relevance passages into the LLM context window.
 2. **Provider Abstraction & Bounded Backoff**: `LlmProvider` isolates Groq (`openai` SDK + custom `baseURL`) and optional Gemini REST integration behind one interface, with `withBoundedRetry` enforcing exponential backoff (`maxRetries=3`) on `429`/`502`/`503`/`504` and strict `20s` request timeouts.
 3. **Citation Validation as Guardrail (Not Proof)**: `validateAndSanitizeCitations` removes out-of-range `[n]` markers and rejects completely uncited answers, while returning retrieved excerpts and source URLs separately so users can verify claims directly.
+
+## Phase 4 Frontend Decisions
+
+1. **Zero UI Framework Dependencies**: Plain responsive CSS + Vue 3 Composition API (`<script setup lang="ts">`) keeps the bundle small and keeps Vue concepts (reactive refs, typed props/emits, computed properties, watchers) transparent.
+2. **XSS-Safe Citation Rendering (`parseAnswerSegments`)**: Rather than injecting HTML with `v-html`, the frontend tokenizes `[n]` citation markers into typed `text` and `citation` segments and renders links declaratively via Vue templates.
+3. **Separated API Service Layer**: HTTP transport, NestJS error message normalization, and segment parsing live in `frontend/src/services/rag-api.ts` independently of UI components.

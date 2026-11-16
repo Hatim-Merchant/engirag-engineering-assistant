@@ -4,13 +4,14 @@
   "private": true,
   "description": "EngiRAG - Engineering Documentation RAG Assistant",
   "scripts": {
-    "lint": "npm --prefix backend run lint",
-    "test": "npm --prefix backend test",
-    "build": "npm --prefix backend run build",
+    "lint": "npm --prefix backend run lint && npm --prefix frontend run lint",
+    "test": "npm --prefix backend test && npm --prefix frontend test",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
     "start:dev": "npm --prefix backend run start:dev",
+    "dev:frontend": "npm --prefix frontend run dev",
     "migrate": "npm --prefix backend run migrate",
     "ingest": "npm --prefix backend run ingest",
-    "format": "npm --prefix backend run format",
-    "format:check": "npm --prefix backend run format:check"
+    "format": "npm --prefix backend run format && npm --prefix frontend run format",
+    "format:check": "npm --prefix backend run format:check && npm --prefix frontend run format:check"
   }
 }

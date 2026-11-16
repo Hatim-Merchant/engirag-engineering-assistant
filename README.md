@@ -2,11 +2,11 @@
 
 EngiRAG is a portfolio-grade Retrieval-Augmented Generation (RAG) web application built with TypeScript, NestJS, Vue 3, PostgreSQL (`pgvector`), and local CPU embeddings (`Transformers.js`). It answers technical engineering questions exclusively from indexed public documentation and provides verifiable numbered citations (`[1]`, `[2]`) linked directly to original documentation pages and section anchors.
 
-> **Project Status**: **Phase 3 (Retrieval, LLM, and RAG API)** complete. Subsequent phases will add the Vue 3 web interface (Phase 4) and reproducible retrieval evaluation (`Hit@k` / `MRR`, Phase 5).
+> **Project Status**: **Phase 4 (Vue 3 Frontend)** complete. Phase 5 will add the 25-question retrieval evaluation benchmark (`Hit@k` and `MRR`) and final public release documentation.
 
 ## Screenshot
 
-_Placeholder — UI screenshot will be added after Phase 4 (Vue 3 frontend) is complete._
+_Placeholder — UI screenshot will be captured and linked after Phase 5 verification._
 
 ## Features
 
@@ -27,15 +27,19 @@ _Placeholder — UI screenshot will be added after Phase 4 (Vue 3 frontend) is c
   - `LlmProvider` interface supporting Groq (via official `openai` SDK with custom `baseURL`) and optional Gemini (`LLM_PROVIDER=groq|gemini`)
   - Bounded exponential backoff retries (`maxRetries=3`, `500ms -> 1000ms -> 2000ms`) for HTTP `429` and transient `502`/`503`/`504` errors, with `20s` timeouts and zero API key logging
   - `POST /ask` endpoint with Zod input validation, grounded prompt construction, inline `[n]` citation validation, and explicit insufficient-context fallback
-- **Planned (Phases 4–5)**:
-  - Vue 3 (`script setup`) chat interface with clickable numbered citations and collapsible source passages
-  - Reproducible retrieval evaluation benchmark (`Hit@k` and `MRR`) across chunk sizes and `k` values
+- **Phase 4 (Implemented)**:
+  - Vue 3 (`<script setup lang="ts">`) interface built with Vite and strict TypeScript
+  - Separated typed API service (`frontend/src/services/rag-api.ts`) and XSS-safe inline citation parser (`parseAnswerSegments`)
+  - Clickable `[1]`, `[2]` citation links opening the original documentation page and `#section` anchor, plus collapsible retrieved passages with similarity scores and verbatim excerpts
+  - Explicit empty, loading, and error states plus Vitest + Vue Test Utils component tests
+- **Planned (Phase 5)**:
+  - Reproducible retrieval evaluation benchmark (`Hit@k` and `MRR`) across chunk sizes (`300`, `500`, `800`) and `k` values (`3`, `5`, `8`)
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-  Client["Vue 3 Frontend (Phase 4)"] -->|"HTTP REST"| API["NestJS Backend"]
+  Client["Vue 3 Frontend (Vite SPA)"] -->|"POST /ask (HTTP REST)"| API["NestJS Backend"]
   API -->|"GET /health"| Health["HealthModule"]
   API -->|"POST /ask"| RAG["RagService"]
   RAG -->|"Local 384d CPU embeddings"| Embeddings["EmbeddingProvider (Transformers.js)"]
@@ -49,7 +53,7 @@ flowchart LR
 ## Technology Stack
 
 - **Backend**: Node.js LTS, TypeScript (`strict: true`), NestJS, Zod, `pg` (plain SQL, no ORM), Jest
-- **Frontend (Phase 4)**: Vue 3 (`script setup`), TypeScript, Vite, Vitest, Vue Test Utils
+- **Frontend**: Vue 3 (`<script setup>`), TypeScript, Vite, Vitest, Vue Test Utils
 - **Vector Store**: PostgreSQL 16 + `pgvector` (HNSW index with `vector_cosine_ops`)
 - **Embeddings**: `@huggingface/transformers` (`^4.3.2`) running `Xenova/all-MiniLM-L6-v2` locally on CPU (384 dimensions)
 - **LLM Inference (Phase 3)**: Groq via OpenAI-compatible SDK (`LlmProvider` interface), optional Gemini
@@ -93,13 +97,22 @@ npm run ingest
 # npm run ingest -- --chunk-size=300 --chunk-overlap=50 --force
 ```
 
-### 5. Start the Backend Server
+### 5. Start the Backend and Frontend Servers
+
+In terminal 1 (NestJS API on port `3000`):
 
 ```bash
 npm run start:dev
 ```
 
-Verify the health endpoint:
+In terminal 2 (Vue 3 SPA on port `5173`):
+
+```bash
+npm --prefix frontend install
+npm run dev:frontend
+```
+
+Open `http://localhost:5173` in your browser, or verify the backend health endpoint directly:
 
 ```bash
 curl http://localhost:3000/health
@@ -234,13 +247,13 @@ _Pending Phase 5 execution. No benchmark numbers will be added until experiments
 
 ## Limitations
 
-- Phases 1–3 cover backend infrastructure, ingestion, retrieval, and grounded `POST /ask` answering; the Vue 3 frontend UI and empirical `Hit@k`/`MRR` retrieval evaluation benchmarks are deferred to Phases 4–5.
+- Phases 1–4 cover infrastructure, ingestion, retrieval, grounded `POST /ask`, and the Vue 3 web interface; empirical `Hit@k`/`MRR` retrieval evaluation benchmarks across chunk sizes are deferred to Phase 5.
 - `estimateTokenCount` uses an offline subword-approximation regex rather than running the Hugging Face WordPiece tokenizer directly, so actual model token counts can differ slightly from configured chunk limits.
 - Syntactic citation validation (`[1]..[k]`) removes out-of-range markers and blocks uncited claims, but does not verify semantic entailment between a claim and its cited excerpt.
 
 ## Testing Instructions
 
-Run backend lint, formatting check, unit tests, and build from `backend/`:
+Run lint, formatting check, unit tests, and build across **both** backend and frontend from the repository root:
 
 ```bash
 npm run lint
@@ -249,10 +262,11 @@ npm test
 npm run build
 ```
 
-Or from the repository root:
+Or run frontend checks individually from `frontend/`:
 
 ```bash
 npm run lint
+npm run format:check
 npm test
 npm run build
 ```
@@ -292,6 +306,21 @@ engirag-engineering-assistant/
 ├── evaluation/
 │   └── results/
 ├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── services/
+│   │   ├── types/
+│   │   ├── views/
+│   │   ├── App.vue
+│   │   ├── main.ts
+│   │   ├── style.css
+│   │   └── vite-env.d.ts
+│   ├── tests/
+│   ├── Dockerfile
+│   ├── index.html
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── vite.config.ts
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
@@ -320,4 +349,4 @@ Only Markdown documentation files listed in `backend/src/ingestion/documentation
 
 ## Future Improvements
 
-- Phases 3–5: Semantic retrieval + Groq/Gemini `POST /ask`, Vue 3 web UI, and `Hit@k`/`MRR` evaluation experiments.
+- Phase 5: 25-question retrieval evaluation dataset and `Hit@k` / `MRR` comparison across `300`, `500`, and `800` token chunks and `k = 3, 5, 8`.
