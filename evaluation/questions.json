@@ -1,0 +1,153 @@
+[
+  {
+    "id": "q01",
+    "question": "What is the purpose of the Vehicle Signal Specification?",
+    "expectedSource": "docs-gen/content/introduction/overview.md",
+    "expectedSection": "What is VSS?"
+  },
+  {
+    "id": "q02",
+    "question": "What are the components of a domain taxonomy in VSS?",
+    "expectedSource": "docs-gen/content/introduction/taxonomy.md",
+    "expectedSection": "Components of a domain taxonomy"
+  },
+  {
+    "id": "q03",
+    "question": "What naming conventions and CamelCase rules apply in the VSS style guide?",
+    "expectedSource": "docs-gen/content/rule_set/basics.md",
+    "expectedSection": "Naming Conventions"
+  },
+  {
+    "id": "q04",
+    "question": "What is a Branch entry in VSS and what attributes are mandatory for it?",
+    "expectedSource": "docs-gen/content/rule_set/branches.md",
+    "expectedSection": "Mandatory Branch Attributes"
+  },
+  {
+    "id": "q05",
+    "question": "How do include directives reuse signal trees across multiple vspec files?",
+    "expectedSource": "docs-gen/content/rule_set/includes.md",
+    "expectedSection": "Directive"
+  },
+  {
+    "id": "q06",
+    "question": "How can I instantiate repeating physical vehicle elements like doors or wheels in VSS?",
+    "expectedSource": "docs-gen/content/rule_set/instances.md",
+    "expectedSection": "Definition"
+  },
+  {
+    "id": "q07",
+    "question": "What is the difference between a sensor, an actuator, and an attribute in VSS?",
+    "expectedSource": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+    "expectedSection": "Property Types Overview"
+  },
+  {
+    "id": "q08",
+    "question": "Which primitive and array datatypes are supported for VSS signals?",
+    "expectedSource": "docs-gen/content/rule_set/data_entry/data_types.md",
+    "expectedSection": "Supported datatypes"
+  },
+  {
+    "id": "q09",
+    "question": "How are struct data types and inline structs defined in VSS?",
+    "expectedSource": "docs-gen/content/rule_set/data_entry/data_types_struct.md"
+  },
+  {
+    "id": "q10",
+    "question": "How are measurement units specified and validated in VSS signal definitions?",
+    "expectedSource": [
+      "docs-gen/content/rule_set/data_entry/data_units.md",
+      "docs-gen/content/policies/unit_datatype.md"
+    ]
+  },
+  {
+    "id": "q11",
+    "question": "How do allowed values and enum mappings differ when constraining a VSS signal?",
+    "expectedSource": [
+      "docs-gen/content/rule_set/data_entry/allowed.md",
+      "docs-gen/content/rule_set/data_entry/enum.md"
+    ]
+  },
+  {
+    "id": "q12",
+    "question": "How does the VSS overlay mechanism extend or delete signals without editing the standard catalog?",
+    "expectedSource": "docs-gen/content/extensions/overlay.md"
+  },
+  {
+    "id": "q13",
+    "question": "How does VSS model vehicle force distribution and braking requests in motion management?",
+    "expectedSource": "docs-gen/content/catalog/vehicle_motion_management.md",
+    "expectedSection": "Braking System"
+  },
+  {
+    "id": "q14",
+    "question": "How do controllers and routing decorators handle HTTP requests in NestJS?",
+    "expectedSource": "content/controllers.md",
+    "expectedSection": "Routing"
+  },
+  {
+    "id": "q15",
+    "question": "How does dependency injection work with Injectable providers in NestJS?",
+    "expectedSource": [
+      "content/components.md",
+      "content/fundamentals/dependency-injection.md"
+    ]
+  },
+  {
+    "id": "q16",
+    "question": "How can I define custom providers using useValue, useClass, and useFactory in NestJS?",
+    "expectedSource": [
+      "content/fundamentals/dependency-injection.md",
+      "content/components.md"
+    ]
+  },
+  {
+    "id": "q17",
+    "question": "How do dynamic modules configure reusable NestJS modules with register or forRoot?",
+    "expectedSource": "content/fundamentals/dynamic-modules.md"
+  },
+  {
+    "id": "q18",
+    "question": "What are NestJS exception filters and how do you bind a custom HttpExceptionFilter?",
+    "expectedSource": "content/exception-filters.md"
+  },
+  {
+    "id": "q19",
+    "question": "How do NestJS authorization guards implement CanActivate using ExecutionContext?",
+    "expectedSource": "content/guards.md"
+  },
+  {
+    "id": "q20",
+    "question": "How do NestJS interceptors wrap request and response streams with RxJS operators?",
+    "expectedSource": "content/interceptors.md"
+  },
+  {
+    "id": "q21",
+    "question": "How do you create a custom parameter decorator using createParamDecorator in NestJS?",
+    "expectedSource": "content/custom-decorators.md",
+    "expectedSection": "Param decorators"
+  },
+  {
+    "id": "q22",
+    "question": "In what order do NestJS lifecycle hooks like OnModuleInit and OnModuleDestroy execute?",
+    "expectedSource": "content/fundamentals/lifecycle-events.md",
+    "expectedSection": "Lifecycle sequence"
+  },
+  {
+    "id": "q23",
+    "question": "How do singleton, request-scoped, and transient provider injection scopes behave in NestJS?",
+    "expectedSource": "content/fundamentals/provider-scopes.md",
+    "expectedSection": "Provider scope"
+  },
+  {
+    "id": "q24",
+    "question": "How does NestJS Test.createTestingModule support unit testing services and controllers?",
+    "expectedSource": "content/fundamentals/unit-testing.md",
+    "expectedSection": "Unit testing"
+  },
+  {
+    "id": "q25",
+    "question": "How does NestJS ValidationPipe automatically transform and strip unknown DTO properties?",
+    "expectedSource": "content/application/validation.md"
+  }
+]

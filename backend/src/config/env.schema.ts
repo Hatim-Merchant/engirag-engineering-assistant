@@ -39,7 +39,7 @@ export const envSchema = z.object({
   LLM_PROVIDER: z.enum(['groq', 'gemini']).default('groq'),
   GROQ_API_KEY: z.string().optional().default(''),
   GROQ_BASE_URL: z.string().trim().url().default('https://api.groq.com/openai/v1'),
-  GROQ_MODEL: z.string().trim().min(1).default('llama-3.1-8b-instant'),
+  GROQ_MODEL: z.string().trim().min(1).default('openai/gpt-oss-20b'),
 
   GEMINI_API_KEY: z.string().optional().default(''),
   GEMINI_MODEL: z.string().trim().min(1).default('gemini-2.5-flash'),
