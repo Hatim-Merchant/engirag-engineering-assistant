@@ -1,0 +1,15 @@
+{
+  "name": "engirag-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EngiRAG - Engineering Documentation RAG Assistant",
+  "scripts": {
+    "lint": "npm --prefix backend run lint",
+    "test": "npm --prefix backend test",
+    "build": "npm --prefix backend run build",
+    "start:dev": "npm --prefix backend run start:dev",
+    "migrate": "npm --prefix backend run migrate",
+    "format": "npm --prefix backend run format",
+    "format:check": "npm --prefix backend run format:check"
+  }
+}

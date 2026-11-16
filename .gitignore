@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Environment variables (never commit real secrets)
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS and editor artifacts
+.DS_Store
+.vscode/
+.idea/
+
+# Local model cache and temporary files
+.cache/
+models/
+tmp/
