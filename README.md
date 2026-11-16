@@ -2,7 +2,7 @@
 
 EngiRAG is a portfolio-grade Retrieval-Augmented Generation (RAG) web application built with TypeScript, NestJS, Vue 3, PostgreSQL (`pgvector`), and local CPU embeddings (`Transformers.js`). It answers technical engineering questions exclusively from indexed public documentation and provides verifiable numbered citations (`[1]`, `[2]`) linked directly to original documentation pages and section anchors.
 
-> **Project Status**: **Phase 2 (Document Ingestion and Chunking)** complete. Subsequent phases will add pgvector semantic retrieval + grounded LLM answering (`POST /ask`), the Vue 3 web interface, and reproducible retrieval evaluation (`Hit@k` / `MRR`).
+> **Project Status**: **Phase 3 (Retrieval, LLM, and RAG API)** complete. Subsequent phases will add the Vue 3 web interface (Phase 4) and reproducible retrieval evaluation (`Hit@k` / `MRR`, Phase 5).
 
 ## Screenshot
 
@@ -22,8 +22,12 @@ _Placeholder — UI screenshot will be added after Phase 4 (Vue 3 frontend) is c
   - Two-stage heading-aware + token-aware chunking with configurable chunk size (`CHUNK_SIZE_TOKENS=500`) and overlap (`CHUNK_OVERLAP_TOKENS=75`)
   - Local CPU vector embeddings via `@huggingface/transformers` (`Xenova/all-MiniLM-L6-v2`, 384 dimensions) behind an `EmbeddingProvider` interface
   - SHA-256 content-hash duplicate detection and transactional re-ingestion (`DELETE` + `INSERT` inside `withTransaction`) so updated documents leave no obsolete chunks behind
-- **Planned (Phases 3–5)**:
-  - Grounded `POST /ask` endpoint with Groq (and optional Gemini) behind an `LlmProvider` interface
+- **Phase 3 (Implemented)**:
+  - `RetrievalService` computing query embeddings locally and ranking top-k chunks via `pgvector` cosine similarity (`1 - (embedding <=> query)`) with configurable `RETRIEVAL_MIN_SCORE`
+  - `LlmProvider` interface supporting Groq (via official `openai` SDK with custom `baseURL`) and optional Gemini (`LLM_PROVIDER=groq|gemini`)
+  - Bounded exponential backoff retries (`maxRetries=3`, `500ms -> 1000ms -> 2000ms`) for HTTP `429` and transient `502`/`503`/`504` errors, with `20s` timeouts and zero API key logging
+  - `POST /ask` endpoint with Zod input validation, grounded prompt construction, inline `[n]` citation validation, and explicit insufficient-context fallback
+- **Planned (Phases 4–5)**:
   - Vue 3 (`script setup`) chat interface with clickable numbered citations and collapsible source passages
   - Reproducible retrieval evaluation benchmark (`Hit@k` and `MRR`) across chunk sizes and `k` values
 
@@ -33,11 +37,11 @@ _Placeholder — UI screenshot will be added after Phase 4 (Vue 3 frontend) is c
 flowchart LR
   Client["Vue 3 Frontend (Phase 4)"] -->|"HTTP REST"| API["NestJS Backend"]
   API -->|"GET /health"| Health["HealthModule"]
-  API -->|"POST /ask (Phase 3)"| RAG["RagService"]
+  API -->|"POST /ask"| RAG["RagService"]
   RAG -->|"Local 384d CPU embeddings"| Embeddings["EmbeddingProvider (Transformers.js)"]
   RAG -->|"Top-k cosine search (<=>)"| DB[("PostgreSQL + pgvector")]
-  RAG -->|"Prompt + retries"| LLM["LlmProvider: Groq / Gemini (Phase 3)"]
-  CLI["Ingestion CLI (Phase 2)"] -->|"Fetch curated Markdown"| GitHub["Public Docs Repos (GitHub Raw)"]
+  RAG -->|"Prompt + bounded retries"| LLM["LlmProvider: Groq / Gemini"]
+  CLI["Ingestion CLI"] -->|"Fetch curated Markdown"| GitHub["Public Docs Repos (GitHub Raw)"]
   CLI -->|"2-stage chunking + 384d vectors"| Embeddings
   CLI -->|"Transactional upsert + chunk replace"| DB
 ```
@@ -140,7 +144,7 @@ docker compose down
 | `LLM_PROVIDER` | `groq` | Active LLM provider (`groq` or `gemini`) |
 | `GROQ_API_KEY` | `""` | API key for Groq inference (Phase 3; never expose in frontend or logs) |
 | `GROQ_BASE_URL` | `https://api.groq.com/openai/v1` | OpenAI-compatible base URL for Groq |
-| `GROQ_MODEL` | `llama-3.1-8b-instant` | Groq model name |
+| `GROQ_MODEL` | `openai/gpt-oss-20b` | Groq model name |
 | `GEMINI_API_KEY` | `""` | Optional Gemini API key (Phase 3) |
 | `GEMINI_MODEL` | `gemini-2.5-flash` | Gemini model name |
 | `CHUNK_SIZE_TOKENS` | `500` | Target maximum token count per chunk |
@@ -189,15 +193,27 @@ EngiRAG uses a **two-stage heading-aware chunking pipeline** (`backend/src/inges
 
 ## Retrieval Methodology
 
-Chunks are stored in PostgreSQL with `pgvector` (`vector(384)`) and indexed with HNSW using `vector_cosine_ops` (`<=>` cosine distance). Full query pipeline pending Phase 3.
+`RetrievalService` (`backend/src/retrieval/retrieval.service.ts`) generates a 384-dimensional query vector using the exact same `EmbeddingProvider` (`normalizeEmbeddingInput` + `Xenova/all-MiniLM-L6-v2`) used during ingestion. PostgreSQL queries `document_chunks` using the `pgvector` cosine distance operator (`<=>`), converting distance to cosine similarity via `1 - (embedding <=> $1::vector)`:
+
+- **Similarity threshold**: Results below `RETRIEVAL_MIN_SCORE` (default `0.35`) are filtered out so off-topic questions do not force irrelevant chunks into the LLM prompt.
+- **Top-k limit**: Returns at most `RETRIEVAL_TOP_K` (default `5`) highest-scoring passages ordered by ascending cosine distance (`embedding <=> $1::vector ASC`).
+- **HNSW indexing**: `idx_document_chunks_embedding_hnsw` (`vector_cosine_ops`) supports incremental inserts without requiring centroid re-training.
+- **Source links**: Stored base `source_url` and `section_anchor` are combined on retrieval (`https://...#anchor`) so citations link directly to the relevant documentation section.
 
 ## LLM Provider Architecture
 
-_Pending Phase 3 implementation (`LlmProvider` interface with Groq and optional Gemini)._
+LLM calls sit behind the `LlmProvider` contract (`backend/src/llm/llm.provider.ts`) and are selected at runtime via `LLM_PROVIDER` (`groq` or `gemini`):
+
+- **Primary (`GroqLlmProvider`)**: Uses the official `openai` npm package configured with Groq's OpenAI-compatible `baseURL` (`https://api.groq.com/openai/v1`), `temperature: 0.1`, `max_tokens: 600`, and a 20-second request timeout.
+- **Optional (`GeminiLlmProvider`)**: Calls Gemini's `generateContent` endpoint with the API key passed in `x-goog-api-key` headers (never in URLs or logs).
+- **Rate-limit & Error Handling**: Both providers disable SDK automatic retries and use `withBoundedRetry` (`backend/src/llm/retry.util.ts`) for bounded exponential backoff (`500ms -> 1000ms -> 2000ms`, capped at `maxRetries = 3`) on HTTP `429`, `502`, `503`, and `504`. Non-retryable `400`/`401`/`403` errors fail immediately and map cleanly to HTTP responses without exposing secrets.
 
 ## Citation Handling & Hallucination Mitigation
 
-_Pending Phase 3 implementation._
+1. **Zero-Hit Short-Circuit**: When `RetrievalService` returns `0` chunks above `RETRIEVAL_MIN_SCORE`, `RagService` immediately returns `INSUFFICIENT_CONTEXT_MESSAGE` with `sources: []` without calling the LLM.
+2. **Grounded Prompting**: `buildGroundedPrompts` instructs the model to answer exclusively from numbered sources `[1]..[k]` and explicitly state when evidence is insufficient.
+3. **Post-Generation Citation Validation**: `validateAndSanitizeCitations` inspects all inline `[n]` markers, strips any out-of-range references (`n < 1` or `n > sources.length`), and falls back to `INSUFFICIENT_CONTEXT_MESSAGE` if a non-refusal response contains zero valid citations.
+4. **Honest Limitations**: Prompt instructions and `[n]` bracket validation **cannot** guarantee semantic truth—an LLM can still misinterpret a passage while attaching a syntactically valid `[1]` marker. For this reason, retrieved `sources` (with verbatim excerpts, scores, and original URLs) are always returned separately so users can verify claims directly.
 
 ## Evaluation Methodology & Results
 
@@ -218,8 +234,9 @@ _Pending Phase 5 execution. No benchmark numbers will be added until experiments
 
 ## Limitations
 
-- Phases 1–2 cover infrastructure, database schema, ingestion, chunking, and local embeddings; query retrieval, LLM grounding (`POST /ask`), frontend UI, and empirical retrieval benchmarks are deferred to Phases 3–5.
+- Phases 1–3 cover backend infrastructure, ingestion, retrieval, and grounded `POST /ask` answering; the Vue 3 frontend UI and empirical `Hit@k`/`MRR` retrieval evaluation benchmarks are deferred to Phases 4–5.
 - `estimateTokenCount` uses an offline subword-approximation regex rather than running the Hugging Face WordPiece tokenizer directly, so actual model token counts can differ slightly from configured chunk limits.
+- Syntactic citation validation (`[1]..[k]`) removes out-of-range markers and blocks uncited claims, but does not verify semantic entailment between a claim and its cited excerpt.
 
 ## Testing Instructions
 
