@@ -1,12 +1,20 @@
 # EngiRAG – Engineering Documentation RAG Assistant
 
-EngiRAG is a portfolio-grade Retrieval-Augmented Generation (RAG) web application built with TypeScript, NestJS, Vue 3, PostgreSQL (`pgvector`), and local CPU embeddings (`Transformers.js`). It answers technical engineering questions exclusively from indexed public documentation and provides verifiable numbered citations (`[1]`, `[2]`) linked directly to original documentation pages and section anchors.
+EngiRAG is a production-grade Retrieval-Augmented Generation (RAG) web application built with TypeScript, NestJS, Vue 3, PostgreSQL (`pgvector`), and local CPU embeddings (`Transformers.js`). It answers technical engineering questions exclusively from indexed public documentation and provides verifiable numbered citations (`[1]`, `[2]`) linked directly to original documentation pages and section anchors.
 
 > **Project Status**: **All 5 Phases Complete** — Infrastructure Foundation, Markdown Ingestion + Local Embeddings, Retrieval + Grounded `POST /ask`, Vue 3 SPA, and Empirical Retrieval Evaluation (`Hit@k` & `MRR`).
 
-## Screenshot
+## Application Walkthrough
 
-_Screenshot Placeholder — once running locally (`http://localhost:5173`), capture a screenshot of a grounded question with expanded retrieved sources and save it to `docs/engirag-ui.png` (then replace this note with `![EngiRAG UI](docs/engirag-ui.png)`)._
+The following screenshots demonstrate the end-to-end question-answering workflow:
+
+<p align="center">
+  <img src="docs/demo1.png" width="85%" alt="EngiRAG Web Interface and Question Input">
+  <br><br>
+  <img src="docs/demo2.png" width="85%" alt="Grounded Answer with Section-Level Citations">
+  <br><br>
+  <img src="docs/demo3.png" width="85%" alt="Retrieved Passages with Cosine Similarity Scores">
+</p>
 
 ## Features
 
@@ -315,7 +323,7 @@ engirag-engineering-assistant/
 │   └── tsconfig.json
 ├── docs/
 │   ├── architecture.md
-│   └── interview-guide.md
+│   └── technical-decisions.md
 ├── evaluation/
 │   ├── questions.json
 │   └── results/

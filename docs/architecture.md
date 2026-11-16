@@ -1,6 +1,6 @@
 # EngiRAG Architecture Overview
 
-> Status: **All 5 Phases Complete** (Infrastructure + Ingestion/Embeddings + Retrieval/RAG API + Vue 3 SPA + Retrieval Evaluation). See also [interview-guide.md](interview-guide.md) and [retrieval-evaluation.md](../evaluation/results/retrieval-evaluation.md).
+> Status: **All 5 Phases Complete** (Infrastructure + Ingestion/Embeddings + Retrieval/RAG API + Vue 3 SPA + Retrieval Evaluation). See also [technical-decisions.md](technical-decisions.md) and [retrieval-evaluation.md](../evaluation/results/retrieval-evaluation.md).
 
 ## System Architecture
 

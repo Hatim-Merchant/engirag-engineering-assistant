@@ -1,6 +1,6 @@
-# EngiRAG Technical Interview Preparation Guide
+# EngiRAG Architecture & Technical Design Decisions
 
-Concise, honest answers to core architecture and AI-engineering questions you can use when presenting EngiRAG in interviews.
+Core engineering decisions, trade-off analyses, and design rationale for the EngiRAG system.
 
 ---
 
