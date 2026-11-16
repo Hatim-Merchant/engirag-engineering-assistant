@@ -1,0 +1,4010 @@
+{
+  "generatedAt": "2026-11-16T18:43:19.508Z",
+  "embeddingModel": "Xenova/all-MiniLM-L6-v2",
+  "totalQuestions": 25,
+  "totalDocuments": 36,
+  "experiments": [
+    {
+      "chunkSizeTokens": 300,
+      "chunkOverlapTokens": 75,
+      "documentsProcessed": 36,
+      "totalChunksCreated": 479,
+      "ingestionDurationMs": 19082,
+      "metricsByK": [
+        {
+          "k": 3,
+          "totalQuestions": 25,
+          "hitsAtK": 24,
+          "hitRateAtK": 0.96,
+          "mrrAtK": 0.9133,
+          "questionsWithExpectedSection": 14,
+          "sectionHitsAtK": 7,
+          "sectionHitRateAtK": 0.5
+        },
+        {
+          "k": 5,
+          "totalQuestions": 25,
+          "hitsAtK": 25,
+          "hitRateAtK": 1,
+          "mrrAtK": 0.9213,
+          "questionsWithExpectedSection": 14,
+          "sectionHitsAtK": 10,
+          "sectionHitRateAtK": 0.7143
+        },
+        {
+          "k": 8,
+          "totalQuestions": 25,
+          "hitsAtK": 25,
+          "hitRateAtK": 1,
+          "mrrAtK": 0.9213,
+          "questionsWithExpectedSection": 14,
+          "sectionHitsAtK": 11,
+          "sectionHitRateAtK": 0.7857
+        }
+      ],
+      "outcomes": [
+        {
+          "questionId": "q01",
+          "question": "What is the purpose of the Vehicle Signal Specification?",
+          "expectedSources": [
+            "docs-gen/content/introduction/overview.md"
+          ],
+          "expectedSection": "What is VSS?",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.6848
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Steering System",
+              "score": 0.5732
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS? > What's out",
+              "score": 0.5626
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS? > What's in",
+              "score": 0.5524
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Braking System",
+              "score": 0.5435
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5241
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Sensors vs. Actuators",
+              "score": 0.5052
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.4864
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q02",
+          "question": "What are the components of a domain taxonomy in VSS?",
+          "expectedSources": [
+            "docs-gen/content/introduction/taxonomy.md"
+          ],
+          "expectedSection": "Components of a domain taxonomy",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Components of a domain taxonomy",
+              "score": 0.866
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "VSS usage for other domains",
+              "score": 0.628
+            },
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Taxonomies",
+              "score": 0.569
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.5367
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instance Relationship",
+              "score": 0.5312
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.516
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Specification format",
+              "score": 0.4878
+            },
+            {
+              "externalId": "docs-gen/content/extensions/network_serialization_profile.md",
+              "sectionHeading": "Network Serialization Profile",
+              "score": 0.4852
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q03",
+          "question": "What naming conventions and CamelCase rules apply in the VSS style guide?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/basics.md"
+          ],
+          "expectedSection": "Naming Conventions",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Style Guide",
+              "score": 0.6315
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Style Guide > Naming Conventions",
+              "score": 0.595
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Definition > Use of instances in VSS Standard Catalog",
+              "score": 0.5735
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instance Relationship",
+              "score": 0.5248
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Specification format",
+              "score": 0.5225
+            },
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Components of a domain taxonomy",
+              "score": 0.5062
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Intended usage",
+              "score": 0.4883
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Branch Entry",
+              "score": 0.4753
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 2
+        },
+        {
+          "questionId": "q04",
+          "question": "What is a Branch entry in VSS and what attributes are mandatory for it?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/branches.md"
+          ],
+          "expectedSection": "Mandatory Branch Attributes",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Branch Entry",
+              "score": 0.6161
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Optional Data Entry Attributes",
+              "score": 0.5517
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "How does it work?",
+              "score": 0.5192
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Mandatory Branch Attributes",
+              "score": 0.4751
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "General Idea and Basic Semantics",
+              "score": 0.471
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Supported Data Units in VSS Standard Catalog",
+              "score": 0.4568
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Parent Nodes",
+              "score": 0.4566
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instance Relationship",
+              "score": 0.4548
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 4
+        },
+        {
+          "questionId": "q05",
+          "question": "How do include directives reuse signal trees across multiple vspec files?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/includes.md"
+          ],
+          "expectedSection": "Directive",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Directive",
+              "score": 0.7677
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Directive > REUSING SIGNAL TREES",
+              "score": 0.7123
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Directive",
+              "score": 0.6924
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "How does it work?",
+              "score": 0.631
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Branch Entry",
+              "score": 0.6241
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "How does it work?",
+              "score": 0.5814
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Simple Definition and Usage",
+              "score": 0.5723
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Parent Nodes",
+              "score": 0.5678
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q06",
+          "question": "How can I instantiate repeating physical vehicle elements like doors or wheels in VSS?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/instances.md"
+          ],
+          "expectedSection": "Definition",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Recommendations > Recommendation: Instance Mismatch",
+              "score": 0.5308
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instances",
+              "score": 0.5286
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.5235
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Redefinition",
+              "score": 0.5196
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Directive > REUSING SIGNAL TREES",
+              "score": 0.5113
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Addressing Nodes",
+              "score": 0.4643
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Example",
+              "score": 0.4546
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.4388
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 4
+        },
+        {
+          "questionId": "q07",
+          "question": "What is the difference between a sensor, an actuator, and an attribute in VSS?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/sensor_actuator.md"
+          ],
+          "expectedSection": "Property Types Overview",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Property Types Overview > actuator type",
+              "score": 0.6559
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Property Types Overview > sensor type",
+              "score": 0.6476
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Sensors vs. Actuators",
+              "score": 0.6018
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Data Streams",
+              "score": 0.5054
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Data Entry",
+              "score": 0.4928
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.482
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Structs vs. Aggregate",
+              "score": 0.4778
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.4651
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q08",
+          "question": "Which primitive and array datatypes are supported for VSS signals?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/data_types.md"
+          ],
+          "expectedSection": "Supported datatypes",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.7003
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Arrays",
+              "score": 0.6816
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Datatypes",
+              "score": 0.6775
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Introduction",
+              "score": 0.672
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Allowed Values",
+              "score": 0.6518
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Structs",
+              "score": 0.65
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Array Support > Expectations on VSS implementations (e.g. VISS, KUKSA.val)",
+              "score": 0.6308
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "General Idea and Basic Semantics",
+              "score": 0.6149
+            }
+          ],
+          "firstRelevantRank": 2,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q09",
+          "question": "How are struct data types and inline structs defined in VSS?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/data_types_struct.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Intended usage",
+              "score": 0.7464
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Structs",
+              "score": 0.7391
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Struct Types",
+              "score": 0.7061
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Introduction",
+              "score": 0.6968
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "General Idea and Basic Semantics",
+              "score": 0.6915
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "General Idea and Basic Semantics",
+              "score": 0.6824
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Naming Restrictions",
+              "score": 0.6522
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "General Idea and Basic Semantics",
+              "score": 0.6324
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q10",
+          "question": "How are measurement units specified and validated in VSS signal definitions?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/data_units.md",
+            "docs-gen/content/policies/unit_datatype.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction > Unit Policy",
+              "score": 0.7838
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Quantity file syntax",
+              "score": 0.718
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Supported Data Units in VSS Standard Catalog",
+              "score": 0.7064
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Supported Data Units in VSS Standard Catalog",
+              "score": 0.697
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.6955
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Introduction to Data Units in VSS",
+              "score": 0.6796
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Unit file syntax",
+              "score": 0.6745
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Introduction to Data Units in VSS",
+              "score": 0.6499
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q11",
+          "question": "How do allowed values and enum mappings differ when constraining a VSS signal?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/allowed.md",
+            "docs-gen/content/rule_set/data_entry/enum.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/enum.md",
+              "sectionHeading": "Specifying a signal as an enum",
+              "score": 0.7366
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/enum.md",
+              "sectionHeading": "Basic syntax > Recommendations",
+              "score": 0.5657
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Allowed Values",
+              "score": 0.5587
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/allowed.md",
+              "sectionHeading": "Specifying allowed values",
+              "score": 0.5161
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Introduction to Data Units in VSS",
+              "score": 0.5131
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5053
+            },
+            {
+              "externalId": "docs-gen/content/extensions/network_serialization_profile.md",
+              "sectionHeading": "Mapping Syntax",
+              "score": 0.502
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction > Datatype Policy",
+              "score": 0.499
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q12",
+          "question": "How does the VSS overlay mechanism extend or delete signals without editing the standard catalog?",
+          "expectedSources": [
+            "docs-gen/content/extensions/overlay.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.6385
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "VSS usage for other domains",
+              "score": 0.6289
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.5779
+            },
+            {
+              "externalId": "docs-gen/content/extensions/network_serialization_profile.md",
+              "sectionHeading": "Network Serialization Profile",
+              "score": 0.5556
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "How does it work?",
+              "score": 0.5534
+            },
+            {
+              "externalId": "docs-gen/content/extensions/cybersecurity_profile.md",
+              "sectionHeading": "Cybersecurity Profile",
+              "score": 0.5525
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5371
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Structs",
+              "score": 0.5335
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q13",
+          "question": "How does VSS model vehicle force distribution and braking requests in motion management?",
+          "expectedSources": [
+            "docs-gen/content/catalog/vehicle_motion_management.md"
+          ],
+          "expectedSection": "Braking System",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5714
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Definitions and Assumptions",
+              "score": 0.5701
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Braking System",
+              "score": 0.5408
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Property Types Overview > actuator type",
+              "score": 0.4684
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.4494
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Example 2 distribution request (Vehicle.MotionManagement.Brake.VehicleForceDistributionFrontMinimum/ Maximum)",
+              "score": 0.4382
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "VSS usage for other domains",
+              "score": 0.4367
+            },
+            {
+              "externalId": "docs-gen/content/catalog/energy_management.md",
+              "sectionHeading": "Introduction",
+              "score": 0.416
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 3
+        },
+        {
+          "questionId": "q14",
+          "question": "How do controllers and routing decorators handle HTTP requests in NestJS?",
+          "expectedSources": [
+            "content/controllers.md"
+          ],
+          "expectedSection": "Routing",
+          "retrievedSources": [
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers",
+              "score": 0.7375
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Param decorators",
+              "score": 0.7009
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Routing",
+              "score": 0.6826
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Param decorators",
+              "score": 0.6595
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Observing routes in production",
+              "score": 0.6503
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Resources",
+              "score": 0.6228
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Routing",
+              "score": 0.602
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Community guidelines",
+              "score": 0.5931
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 3
+        },
+        {
+          "questionId": "q15",
+          "question": "How does dependency injection work with Injectable providers in NestJS?",
+          "expectedSources": [
+            "content/components.md",
+            "content/fundamentals/dependency-injection.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > DI fundamentals",
+              "score": 0.8066
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Manual instantiation",
+              "score": 0.7176
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers",
+              "score": 0.7104
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Durable providers",
+              "score": 0.697
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > Non-class-based provider tokens",
+              "score": 0.6949
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers",
+              "score": 0.6921
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Optional providers",
+              "score": 0.6836
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > Factory providers: useFactory",
+              "score": 0.6804
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q16",
+          "question": "How can I define custom providers using useValue, useClass, and useFactory in NestJS?",
+          "expectedSources": [
+            "content/fundamentals/dependency-injection.md",
+            "content/components.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Inquirer provider",
+              "score": 0.7085
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Introduction",
+              "score": 0.7067
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Durable providers",
+              "score": 0.7061
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Usage",
+              "score": 0.6863
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > Custom providers",
+              "score": 0.6654
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > DI fundamentals",
+              "score": 0.6598
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Property-based injection",
+              "score": 0.6558
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > Factory providers: useFactory",
+              "score": 0.6554
+            }
+          ],
+          "firstRelevantRank": 5,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q17",
+          "question": "How do dynamic modules configure reusable NestJS modules with register or forRoot?",
+          "expectedSources": [
+            "content/fundamentals/dynamic-modules.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Community guidelines",
+              "score": 0.7906
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Dynamic module example",
+              "score": 0.6854
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules",
+              "score": 0.6824
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Dynamic module example",
+              "score": 0.6713
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Configurable module builder",
+              "score": 0.6289
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Module configuration",
+              "score": 0.6232
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Introduction",
+              "score": 0.6124
+            },
+            {
+              "externalId": "content/application/configuration.md",
+              "sectionHeading": "Configuration > Partial registration",
+              "score": 0.6072
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q18",
+          "question": "What are NestJS exception filters and how do you bind a custom HttpExceptionFilter?",
+          "expectedSources": [
+            "content/exception-filters.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters",
+              "score": 0.8047
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Inheritance",
+              "score": 0.7822
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Exception filters",
+              "score": 0.7385
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Built-in HTTP exceptions",
+              "score": 0.7324
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Exceptions logging",
+              "score": 0.7279
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Binding filters",
+              "score": 0.6962
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Exception filters",
+              "score": 0.6848
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Binding filters",
+              "score": 0.6735
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q19",
+          "question": "How do NestJS authorization guards implement CanActivate using ExecutionContext?",
+          "expectedSources": [
+            "content/guards.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Authorization guard",
+              "score": 0.7479
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Authorization guard",
+              "score": 0.7231
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Putting it all together",
+              "score": 0.6975
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Role-based authentication",
+              "score": 0.6792
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Execution context",
+              "score": 0.6325
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Binding guards",
+              "score": 0.6194
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Binding guards",
+              "score": 0.6126
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards",
+              "score": 0.6052
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q20",
+          "question": "How do NestJS interceptors wrap request and response streams with RxJS operators?",
+          "expectedSources": [
+            "content/interceptors.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Response mapping",
+              "score": 0.7577
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Response mapping",
+              "score": 0.7333
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Aspect interception",
+              "score": 0.7095
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Asynchronicity",
+              "score": 0.7061
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Call handler",
+              "score": 0.7001
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Aspect interception",
+              "score": 0.6883
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Response mapping",
+              "score": 0.6863
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Exception mapping",
+              "score": 0.6702
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q21",
+          "question": "How do you create a custom parameter decorator using createParamDecorator in NestJS?",
+          "expectedSources": [
+            "content/custom-decorators.md"
+          ],
+          "expectedSection": "Param decorators",
+          "retrievedSources": [
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Validating custom decorators",
+              "score": 0.6519
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Route parameters",
+              "score": 0.6405
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Working with pipes",
+              "score": 0.6312
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Param decorators",
+              "score": 0.6218
+            },
+            {
+              "externalId": "content/fundamentals/execution-context.md",
+              "sectionHeading": "Execution context > Low-level approach",
+              "score": 0.5833
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Passing data",
+              "score": 0.5828
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Passing data",
+              "score": 0.5508
+            },
+            {
+              "externalId": "content/fundamentals/execution-context.md",
+              "sectionHeading": "Execution context > Low-level approach",
+              "score": 0.5352
+            }
+          ],
+          "firstRelevantRank": 3,
+          "firstSectionMatchRank": 4
+        },
+        {
+          "questionId": "q22",
+          "question": "In what order do NestJS lifecycle hooks like OnModuleInit and OnModuleDestroy execute?",
+          "expectedSources": [
+            "content/fundamentals/lifecycle-events.md"
+          ],
+          "expectedSection": "Lifecycle sequence",
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Usage",
+              "score": 0.6679
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Lifecycle events",
+              "score": 0.6458
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Application shutdown",
+              "score": 0.6424
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Lifecycle events",
+              "score": 0.63
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events",
+              "score": 0.6241
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Community guidelines",
+              "score": 0.6095
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Application shutdown",
+              "score": 0.5906
+            },
+            {
+              "externalId": "content/first-steps.md",
+              "sectionHeading": "First steps > Setup",
+              "score": 0.538
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q23",
+          "question": "How do singleton, request-scoped, and transient provider injection scopes behave in NestJS?",
+          "expectedSources": [
+            "content/fundamentals/provider-scopes.md"
+          ],
+          "expectedSection": "Provider scope",
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes",
+              "score": 0.7381
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > State sharing",
+              "score": 0.7341
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Scopes",
+              "score": 0.6935
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Scope hierarchy",
+              "score": 0.6835
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Request provider",
+              "score": 0.6806
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Durable providers",
+              "score": 0.673
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Performance",
+              "score": 0.665
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Usage",
+              "score": 0.6475
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q24",
+          "question": "How does NestJS Test.createTestingModule support unit testing services and controllers?",
+          "expectedSources": [
+            "content/fundamentals/unit-testing.md"
+          ],
+          "expectedSection": "Unit testing",
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing",
+              "score": 0.6432
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Testing utilities",
+              "score": 0.6429
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Installation",
+              "score": 0.6352
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Testing utilities",
+              "score": 0.6317
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > End-to-end testing",
+              "score": 0.589
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing",
+              "score": 0.5882
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Unit testing",
+              "score": 0.5812
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers",
+              "score": 0.5781
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 7
+        },
+        {
+          "questionId": "q25",
+          "question": "How does NestJS ValidationPipe automatically transform and strip unknown DTO properties?",
+          "expectedSources": [
+            "content/application/validation.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Transform payload objects",
+              "score": 0.6633
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Request payloads",
+              "score": 0.604
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Auto-validation",
+              "score": 0.6028
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Stripping properties",
+              "score": 0.596
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Using the built-in ValidationPipe",
+              "score": 0.5943
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation",
+              "score": 0.5921
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Schema-based validation",
+              "score": 0.5734
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Explicit conversion",
+              "score": 0.5663
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        }
+      ]
+    },
+    {
+      "chunkSizeTokens": 500,
+      "chunkOverlapTokens": 75,
+      "documentsProcessed": 36,
+      "totalChunksCreated": 362,
+      "ingestionDurationMs": 9774,
+      "metricsByK": [
+        {
+          "k": 3,
+          "totalQuestions": 25,
+          "hitsAtK": 25,
+          "hitRateAtK": 1,
+          "mrrAtK": 0.94,
+          "questionsWithExpectedSection": 14,
+          "sectionHitsAtK": 8,
+          "sectionHitRateAtK": 0.5714
+        },
+        {
+          "k": 5,
+          "totalQuestions": 25,
+          "hitsAtK": 25,
+          "hitRateAtK": 1,
+          "mrrAtK": 0.94,
+          "questionsWithExpectedSection": 14,
+          "sectionHitsAtK": 10,
+          "sectionHitRateAtK": 0.7143
+        },
+        {
+          "k": 8,
+          "totalQuestions": 25,
+          "hitsAtK": 25,
+          "hitRateAtK": 1,
+          "mrrAtK": 0.94,
+          "questionsWithExpectedSection": 14,
+          "sectionHitsAtK": 11,
+          "sectionHitRateAtK": 0.7857
+        }
+      ],
+      "outcomes": [
+        {
+          "questionId": "q01",
+          "question": "What is the purpose of the Vehicle Signal Specification?",
+          "expectedSources": [
+            "docs-gen/content/introduction/overview.md"
+          ],
+          "expectedSection": "What is VSS?",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.6848
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Steering System",
+              "score": 0.5732
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS? > What's out",
+              "score": 0.5626
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS? > What's in",
+              "score": 0.5524
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Braking System",
+              "score": 0.5435
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5241
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Sensors vs. Actuators",
+              "score": 0.5052
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Definitions and Assumptions",
+              "score": 0.5027
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q02",
+          "question": "What are the components of a domain taxonomy in VSS?",
+          "expectedSources": [
+            "docs-gen/content/introduction/taxonomy.md"
+          ],
+          "expectedSection": "Components of a domain taxonomy",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Components of a domain taxonomy",
+              "score": 0.866
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "VSS usage for other domains",
+              "score": 0.628
+            },
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Taxonomies",
+              "score": 0.569
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instance Relationship",
+              "score": 0.5312
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.516
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.5142
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Specification format",
+              "score": 0.4878
+            },
+            {
+              "externalId": "docs-gen/content/extensions/network_serialization_profile.md",
+              "sectionHeading": "Network Serialization Profile",
+              "score": 0.4852
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q03",
+          "question": "What naming conventions and CamelCase rules apply in the VSS style guide?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/basics.md"
+          ],
+          "expectedSection": "Naming Conventions",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Style Guide",
+              "score": 0.6315
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Style Guide > Naming Conventions",
+              "score": 0.595
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Definition > Use of instances in VSS Standard Catalog",
+              "score": 0.5735
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instance Relationship",
+              "score": 0.5248
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Specification format",
+              "score": 0.5225
+            },
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Components of a domain taxonomy",
+              "score": 0.5062
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Intended usage",
+              "score": 0.4883
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Branch Entry",
+              "score": 0.4753
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 2
+        },
+        {
+          "questionId": "q04",
+          "question": "What is a Branch entry in VSS and what attributes are mandatory for it?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/branches.md"
+          ],
+          "expectedSection": "Mandatory Branch Attributes",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Branch Entry",
+              "score": 0.6161
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "How does it work?",
+              "score": 0.4857
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Optional Data Entry Attributes",
+              "score": 0.4777
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Mandatory Branch Attributes",
+              "score": 0.4751
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Parent Nodes",
+              "score": 0.4566
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instance Relationship",
+              "score": 0.4548
+            },
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Components of a domain taxonomy",
+              "score": 0.4497
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Data Entry",
+              "score": 0.4474
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 4
+        },
+        {
+          "questionId": "q05",
+          "question": "How do include directives reuse signal trees across multiple vspec files?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/includes.md"
+          ],
+          "expectedSection": "Directive",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Directive",
+              "score": 0.7624
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Directive > REUSING SIGNAL TREES",
+              "score": 0.7123
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Branch Entry",
+              "score": 0.6241
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "How does it work?",
+              "score": 0.6075
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Simple Definition and Usage",
+              "score": 0.5723
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Parent Nodes",
+              "score": 0.5678
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Specification format",
+              "score": 0.5589
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Includes",
+              "score": 0.5347
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q06",
+          "question": "How can I instantiate repeating physical vehicle elements like doors or wheels in VSS?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/instances.md"
+          ],
+          "expectedSection": "Definition",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.5469
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Recommendations > Recommendation: Instance Mismatch",
+              "score": 0.5308
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instances",
+              "score": 0.5286
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Redefinition",
+              "score": 0.5196
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Directive > REUSING SIGNAL TREES",
+              "score": 0.5113
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Example",
+              "score": 0.4546
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.4388
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Recommendations > Recommendation: Features lacking for some instances",
+              "score": 0.436
+            }
+          ],
+          "firstRelevantRank": 2,
+          "firstSectionMatchRank": 4
+        },
+        {
+          "questionId": "q07",
+          "question": "What is the difference between a sensor, an actuator, and an attribute in VSS?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/sensor_actuator.md"
+          ],
+          "expectedSection": "Property Types Overview",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Property Types Overview > actuator type",
+              "score": 0.6559
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Property Types Overview > sensor type",
+              "score": 0.6476
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Sensors vs. Actuators",
+              "score": 0.6018
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Data Streams",
+              "score": 0.5054
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Data Entry",
+              "score": 0.4928
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Structs vs. Aggregate",
+              "score": 0.4778
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.4651
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Recommendations > Recommendation: Features lacking for some instances",
+              "score": 0.4596
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q08",
+          "question": "Which primitive and array datatypes are supported for VSS signals?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/data_types.md"
+          ],
+          "expectedSection": "Supported datatypes",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.7003
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Arrays",
+              "score": 0.6816
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Datatypes",
+              "score": 0.6775
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Introduction",
+              "score": 0.672
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Allowed Values",
+              "score": 0.6518
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Structs",
+              "score": 0.65
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Array Support > Expectations on VSS implementations (e.g. VISS, KUKSA.val)",
+              "score": 0.6308
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction > Datatype Policy",
+              "score": 0.6048
+            }
+          ],
+          "firstRelevantRank": 2,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q09",
+          "question": "How are struct data types and inline structs defined in VSS?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/data_types_struct.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Intended usage",
+              "score": 0.7464
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Structs",
+              "score": 0.7391
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Struct Types",
+              "score": 0.7061
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Introduction",
+              "score": 0.6968
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "General Idea and Basic Semantics",
+              "score": 0.6826
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Naming Restrictions",
+              "score": 0.6522
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "General Idea and Basic Semantics",
+              "score": 0.6442
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Data Entry",
+              "score": 0.6171
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q10",
+          "question": "How are measurement units specified and validated in VSS signal definitions?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/data_units.md",
+            "docs-gen/content/policies/unit_datatype.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction > Unit Policy",
+              "score": 0.7838
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Quantity file syntax",
+              "score": 0.718
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Supported Data Units in VSS Standard Catalog",
+              "score": 0.7001
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.6955
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Introduction to Data Units in VSS",
+              "score": 0.6468
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction > Datatype Policy",
+              "score": 0.6261
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Supported Data Units in VSS Standard Catalog > Addition of new Data Units to VSS standard catalog",
+              "score": 0.6163
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Unit file syntax",
+              "score": 0.5977
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q11",
+          "question": "How do allowed values and enum mappings differ when constraining a VSS signal?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/allowed.md",
+            "docs-gen/content/rule_set/data_entry/enum.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/enum.md",
+              "sectionHeading": "Specifying a signal as an enum",
+              "score": 0.7366
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/enum.md",
+              "sectionHeading": "Basic syntax > Recommendations",
+              "score": 0.5657
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Allowed Values",
+              "score": 0.5587
+            },
+            {
+              "externalId": "docs-gen/content/extensions/network_serialization_profile.md",
+              "sectionHeading": "Mapping Syntax",
+              "score": 0.5178
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/allowed.md",
+              "sectionHeading": "Specifying allowed values",
+              "score": 0.5161
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5053
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction > Datatype Policy",
+              "score": 0.499
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.489
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q12",
+          "question": "How does the VSS overlay mechanism extend or delete signals without editing the standard catalog?",
+          "expectedSources": [
+            "docs-gen/content/extensions/overlay.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.6305
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "VSS usage for other domains",
+              "score": 0.6289
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.5779
+            },
+            {
+              "externalId": "docs-gen/content/extensions/network_serialization_profile.md",
+              "sectionHeading": "Network Serialization Profile",
+              "score": 0.5556
+            },
+            {
+              "externalId": "docs-gen/content/extensions/cybersecurity_profile.md",
+              "sectionHeading": "Cybersecurity Profile",
+              "score": 0.5525
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5371
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Structs",
+              "score": 0.5335
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Supported Data Units in VSS Standard Catalog > Addition of new Data Units to VSS standard catalog",
+              "score": 0.5192
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q13",
+          "question": "How does VSS model vehicle force distribution and braking requests in motion management?",
+          "expectedSources": [
+            "docs-gen/content/catalog/vehicle_motion_management.md"
+          ],
+          "expectedSection": "Braking System",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5714
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Braking System",
+              "score": 0.5408
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Property Types Overview > actuator type",
+              "score": 0.4684
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Definitions and Assumptions",
+              "score": 0.464
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.4452
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Example 2 distribution request (Vehicle.MotionManagement.Brake.VehicleForceDistributionFrontMinimum/ Maximum)",
+              "score": 0.4382
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "VSS usage for other domains",
+              "score": 0.4367
+            },
+            {
+              "externalId": "docs-gen/content/catalog/energy_management.md",
+              "sectionHeading": "Introduction",
+              "score": 0.416
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 2
+        },
+        {
+          "questionId": "q14",
+          "question": "How do controllers and routing decorators handle HTTP requests in NestJS?",
+          "expectedSources": [
+            "content/controllers.md"
+          ],
+          "expectedSection": "Routing",
+          "retrievedSources": [
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers",
+              "score": 0.7375
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Param decorators",
+              "score": 0.7009
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Routing",
+              "score": 0.6417
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Resources",
+              "score": 0.6228
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Observing routes in production",
+              "score": 0.6076
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Request object",
+              "score": 0.5872
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Throwing standard exceptions",
+              "score": 0.587
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > State sharing",
+              "score": 0.5823
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 3
+        },
+        {
+          "questionId": "q15",
+          "question": "How does dependency injection work with Injectable providers in NestJS?",
+          "expectedSources": [
+            "content/components.md",
+            "content/fundamentals/dependency-injection.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Manual instantiation",
+              "score": 0.7176
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > DI fundamentals",
+              "score": 0.7127
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers",
+              "score": 0.7104
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers",
+              "score": 0.6921
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Optional providers",
+              "score": 0.6836
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Property-based injection",
+              "score": 0.6735
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Inquirer provider",
+              "score": 0.671
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > Factory providers: useFactory",
+              "score": 0.6601
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q16",
+          "question": "How can I define custom providers using useValue, useClass, and useFactory in NestJS?",
+          "expectedSources": [
+            "content/fundamentals/dependency-injection.md",
+            "content/components.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > Factory providers: useFactory",
+              "score": 0.7119
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Inquirer provider",
+              "score": 0.7085
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Usage",
+              "score": 0.6863
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > Custom providers",
+              "score": 0.6654
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Property-based injection",
+              "score": 0.6558
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers",
+              "score": 0.644
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Binding guards",
+              "score": 0.64
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Introduction",
+              "score": 0.627
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q17",
+          "question": "How do dynamic modules configure reusable NestJS modules with register or forRoot?",
+          "expectedSources": [
+            "content/fundamentals/dynamic-modules.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Community guidelines",
+              "score": 0.6879
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules",
+              "score": 0.6824
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Dynamic module example",
+              "score": 0.6576
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Dynamic module example",
+              "score": 0.6476
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Dynamic module example",
+              "score": 0.6452
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Configurable module builder",
+              "score": 0.621
+            },
+            {
+              "externalId": "content/application/configuration.md",
+              "sectionHeading": "Configuration > Partial registration",
+              "score": 0.6072
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Extending auto-generated methods",
+              "score": 0.6022
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q18",
+          "question": "What are NestJS exception filters and how do you bind a custom HttpExceptionFilter?",
+          "expectedSources": [
+            "content/exception-filters.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters",
+              "score": 0.8011
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Exception filters",
+              "score": 0.7822
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Inheritance",
+              "score": 0.7718
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Built-in HTTP exceptions",
+              "score": 0.7324
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Exceptions logging",
+              "score": 0.7279
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Binding filters",
+              "score": 0.6809
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Custom exceptions",
+              "score": 0.653
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Handling errors",
+              "score": 0.6455
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q19",
+          "question": "How do NestJS authorization guards implement CanActivate using ExecutionContext?",
+          "expectedSources": [
+            "content/guards.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Authorization guard",
+              "score": 0.7615
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Putting it all together",
+              "score": 0.6859
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Role-based authentication",
+              "score": 0.6792
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Putting it all together",
+              "score": 0.6687
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Execution context",
+              "score": 0.6325
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Binding guards",
+              "score": 0.606
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards",
+              "score": 0.6052
+            },
+            {
+              "externalId": "content/fundamentals/execution-context.md",
+              "sectionHeading": "Execution context",
+              "score": 0.5956
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q20",
+          "question": "How do NestJS interceptors wrap request and response streams with RxJS operators?",
+          "expectedSources": [
+            "content/interceptors.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Response mapping",
+              "score": 0.7516
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Response mapping",
+              "score": 0.7163
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Asynchronicity",
+              "score": 0.7061
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Aspect interception",
+              "score": 0.6928
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Exception mapping",
+              "score": 0.6702
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Call handler",
+              "score": 0.6647
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Stream overriding",
+              "score": 0.6637
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > More operators",
+              "score": 0.6615
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q21",
+          "question": "How do you create a custom parameter decorator using createParamDecorator in NestJS?",
+          "expectedSources": [
+            "content/custom-decorators.md"
+          ],
+          "expectedSection": "Param decorators",
+          "retrievedSources": [
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Validating custom decorators",
+              "score": 0.6519
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Working with pipes",
+              "score": 0.6312
+            },
+            {
+              "externalId": "content/fundamentals/execution-context.md",
+              "sectionHeading": "Execution context > Low-level approach",
+              "score": 0.566
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Passing data",
+              "score": 0.5414
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators",
+              "score": 0.5288
+            },
+            {
+              "externalId": "content/fundamentals/execution-context.md",
+              "sectionHeading": "Execution context > Low-level approach",
+              "score": 0.5106
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Param decorators",
+              "score": 0.51
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Dynamic module example",
+              "score": 0.4978
+            }
+          ],
+          "firstRelevantRank": 2,
+          "firstSectionMatchRank": 7
+        },
+        {
+          "questionId": "q22",
+          "question": "In what order do NestJS lifecycle hooks like OnModuleInit and OnModuleDestroy execute?",
+          "expectedSources": [
+            "content/fundamentals/lifecycle-events.md"
+          ],
+          "expectedSection": "Lifecycle sequence",
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Usage",
+              "score": 0.6679
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Application shutdown",
+              "score": 0.6322
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Lifecycle events",
+              "score": 0.63
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events",
+              "score": 0.6241
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Community guidelines",
+              "score": 0.5998
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Application shutdown",
+              "score": 0.5369
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Scopes",
+              "score": 0.5324
+            },
+            {
+              "externalId": "content/first-steps.md",
+              "sectionHeading": "First steps > Setup",
+              "score": 0.5311
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q23",
+          "question": "How do singleton, request-scoped, and transient provider injection scopes behave in NestJS?",
+          "expectedSources": [
+            "content/fundamentals/provider-scopes.md"
+          ],
+          "expectedSection": "Provider scope",
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes",
+              "score": 0.7381
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > State sharing",
+              "score": 0.7341
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Scopes",
+              "score": 0.6935
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Scope hierarchy",
+              "score": 0.6835
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Performance",
+              "score": 0.665
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Usage",
+              "score": 0.6475
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Community guidelines",
+              "score": 0.6386
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Request provider",
+              "score": 0.637
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q24",
+          "question": "How does NestJS Test.createTestingModule support unit testing services and controllers?",
+          "expectedSources": [
+            "content/fundamentals/unit-testing.md"
+          ],
+          "expectedSection": "Unit testing",
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Testing utilities",
+              "score": 0.6577
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Unit testing",
+              "score": 0.6387
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Installation",
+              "score": 0.6352
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing",
+              "score": 0.5994
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers",
+              "score": 0.5781
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Auto mocking",
+              "score": 0.5591
+            },
+            {
+              "externalId": "content/first-steps.md",
+              "sectionHeading": "First steps > Setup",
+              "score": 0.5381
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Module configuration",
+              "score": 0.5233
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 2
+        },
+        {
+          "questionId": "q25",
+          "question": "How does NestJS ValidationPipe automatically transform and strip unknown DTO properties?",
+          "expectedSources": [
+            "content/application/validation.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Transform payload objects",
+              "score": 0.6633
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Request payloads",
+              "score": 0.6078
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Stripping properties",
+              "score": 0.596
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Using the built-in ValidationPipe",
+              "score": 0.5943
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation",
+              "score": 0.5921
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Auto-validation",
+              "score": 0.5863
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Explicit conversion",
+              "score": 0.5663
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Working with pipes",
+              "score": 0.5508
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        }
+      ]
+    },
+    {
+      "chunkSizeTokens": 800,
+      "chunkOverlapTokens": 75,
+      "documentsProcessed": 36,
+      "totalChunksCreated": 312,
+      "ingestionDurationMs": 8502,
+      "metricsByK": [
+        {
+          "k": 3,
+          "totalQuestions": 25,
+          "hitsAtK": 25,
+          "hitRateAtK": 1,
+          "mrrAtK": 0.92,
+          "questionsWithExpectedSection": 14,
+          "sectionHitsAtK": 9,
+          "sectionHitRateAtK": 0.6429
+        },
+        {
+          "k": 5,
+          "totalQuestions": 25,
+          "hitsAtK": 25,
+          "hitRateAtK": 1,
+          "mrrAtK": 0.92,
+          "questionsWithExpectedSection": 14,
+          "sectionHitsAtK": 10,
+          "sectionHitRateAtK": 0.7143
+        },
+        {
+          "k": 8,
+          "totalQuestions": 25,
+          "hitsAtK": 25,
+          "hitRateAtK": 1,
+          "mrrAtK": 0.92,
+          "questionsWithExpectedSection": 14,
+          "sectionHitsAtK": 10,
+          "sectionHitRateAtK": 0.7143
+        }
+      ],
+      "outcomes": [
+        {
+          "questionId": "q01",
+          "question": "What is the purpose of the Vehicle Signal Specification?",
+          "expectedSources": [
+            "docs-gen/content/introduction/overview.md"
+          ],
+          "expectedSection": "What is VSS?",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.6848
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS? > What's out",
+              "score": 0.5626
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS? > What's in",
+              "score": 0.5524
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Braking System",
+              "score": 0.5435
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5241
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Sensors vs. Actuators",
+              "score": 0.5052
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.4864
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "VSS usage for other domains",
+              "score": 0.4841
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q02",
+          "question": "What are the components of a domain taxonomy in VSS?",
+          "expectedSources": [
+            "docs-gen/content/introduction/taxonomy.md"
+          ],
+          "expectedSection": "Components of a domain taxonomy",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Components of a domain taxonomy",
+              "score": 0.866
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "VSS usage for other domains",
+              "score": 0.628
+            },
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Taxonomies",
+              "score": 0.569
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instance Relationship",
+              "score": 0.5312
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.516
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.5142
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Specification format",
+              "score": 0.4878
+            },
+            {
+              "externalId": "docs-gen/content/extensions/network_serialization_profile.md",
+              "sectionHeading": "Network Serialization Profile",
+              "score": 0.4852
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q03",
+          "question": "What naming conventions and CamelCase rules apply in the VSS style guide?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/basics.md"
+          ],
+          "expectedSection": "Naming Conventions",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Style Guide",
+              "score": 0.6315
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Style Guide > Naming Conventions",
+              "score": 0.595
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Definition > Use of instances in VSS Standard Catalog",
+              "score": 0.5735
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instance Relationship",
+              "score": 0.5248
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Specification format",
+              "score": 0.5225
+            },
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Components of a domain taxonomy",
+              "score": 0.5062
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Intended usage",
+              "score": 0.4883
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Branch Entry",
+              "score": 0.4753
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 2
+        },
+        {
+          "questionId": "q04",
+          "question": "What is a Branch entry in VSS and what attributes are mandatory for it?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/branches.md"
+          ],
+          "expectedSection": "Mandatory Branch Attributes",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Branch Entry",
+              "score": 0.6161
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Optional Data Entry Attributes",
+              "score": 0.5288
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Mandatory Branch Attributes",
+              "score": 0.4751
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "How does it work?",
+              "score": 0.4617
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Parent Nodes",
+              "score": 0.4566
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instance Relationship",
+              "score": 0.4548
+            },
+            {
+              "externalId": "docs-gen/content/introduction/taxonomy.md",
+              "sectionHeading": "Components of a domain taxonomy",
+              "score": 0.4497
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Data Entry",
+              "score": 0.4474
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 3
+        },
+        {
+          "questionId": "q05",
+          "question": "How do include directives reuse signal trees across multiple vspec files?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/includes.md"
+          ],
+          "expectedSection": "Directive",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Directive",
+              "score": 0.7624
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Directive > REUSING SIGNAL TREES",
+              "score": 0.7123
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/branches.md",
+              "sectionHeading": "Branch Entry",
+              "score": 0.6241
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "How does it work?",
+              "score": 0.6099
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Simple Definition and Usage",
+              "score": 0.5723
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Parent Nodes",
+              "score": 0.5678
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/basics.md",
+              "sectionHeading": "Specification format",
+              "score": 0.5589
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Includes",
+              "score": 0.5347
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q06",
+          "question": "How can I instantiate repeating physical vehicle elements like doors or wheels in VSS?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/instances.md"
+          ],
+          "expectedSection": "Definition",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.5469
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Recommendations > Recommendation: Instance Mismatch",
+              "score": 0.5308
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Instances",
+              "score": 0.5286
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Redefinition",
+              "score": 0.5196
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/includes.md",
+              "sectionHeading": "Directive > REUSING SIGNAL TREES",
+              "score": 0.5113
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Example",
+              "score": 0.4546
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.4388
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Recommendations > Recommendation: Features lacking for some instances",
+              "score": 0.436
+            }
+          ],
+          "firstRelevantRank": 2,
+          "firstSectionMatchRank": 4
+        },
+        {
+          "questionId": "q07",
+          "question": "What is the difference between a sensor, an actuator, and an attribute in VSS?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/sensor_actuator.md"
+          ],
+          "expectedSection": "Property Types Overview",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Property Types Overview > actuator type",
+              "score": 0.6559
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Property Types Overview > sensor type",
+              "score": 0.6476
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Sensors vs. Actuators",
+              "score": 0.6018
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Data Streams",
+              "score": 0.5054
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Data Entry",
+              "score": 0.4928
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Structs vs. Aggregate",
+              "score": 0.4778
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.4651
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/instances.md",
+              "sectionHeading": "Recommendations > Recommendation: Features lacking for some instances",
+              "score": 0.4596
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 1
+        },
+        {
+          "questionId": "q08",
+          "question": "Which primitive and array datatypes are supported for VSS signals?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/data_types.md"
+          ],
+          "expectedSection": "Supported datatypes",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.7003
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Arrays",
+              "score": 0.6816
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Introduction",
+              "score": 0.672
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Allowed Values",
+              "score": 0.6518
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Structs",
+              "score": 0.65
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Array Support > Expectations on VSS implementations (e.g. VISS, KUKSA.val)",
+              "score": 0.6308
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction > Datatype Policy",
+              "score": 0.6048
+            },
+            {
+              "externalId": "docs-gen/content/extensions/network_serialization_profile.md",
+              "sectionHeading": "Network Serialization Profile",
+              "score": 0.581
+            }
+          ],
+          "firstRelevantRank": 2,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q09",
+          "question": "How are struct data types and inline structs defined in VSS?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/data_types_struct.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Intended usage",
+              "score": 0.7464
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Structs",
+              "score": 0.7391
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Struct Types",
+              "score": 0.7061
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Introduction",
+              "score": 0.6968
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Naming Restrictions",
+              "score": 0.6522
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "General Idea and Basic Semantics",
+              "score": 0.6442
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Data Entry",
+              "score": 0.6171
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Allowed Values",
+              "score": 0.5988
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q10",
+          "question": "How are measurement units specified and validated in VSS signal definitions?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/data_units.md",
+            "docs-gen/content/policies/unit_datatype.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction > Unit Policy",
+              "score": 0.7838
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Quantity file syntax",
+              "score": 0.718
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Supported Data Units in VSS Standard Catalog",
+              "score": 0.7001
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.6955
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Introduction to Data Units in VSS",
+              "score": 0.6334
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction > Datatype Policy",
+              "score": 0.6261
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Supported Data Units in VSS Standard Catalog > Addition of new Data Units to VSS standard catalog",
+              "score": 0.6163
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Unit file syntax",
+              "score": 0.5977
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q11",
+          "question": "How do allowed values and enum mappings differ when constraining a VSS signal?",
+          "expectedSources": [
+            "docs-gen/content/rule_set/data_entry/allowed.md",
+            "docs-gen/content/rule_set/data_entry/enum.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/enum.md",
+              "sectionHeading": "Specifying a signal as an enum",
+              "score": 0.7366
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/enum.md",
+              "sectionHeading": "Basic syntax > Recommendations",
+              "score": 0.5657
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Allowed Values",
+              "score": 0.5587
+            },
+            {
+              "externalId": "docs-gen/content/extensions/network_serialization_profile.md",
+              "sectionHeading": "Mapping Syntax",
+              "score": 0.5178
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/allowed.md",
+              "sectionHeading": "Specifying allowed values",
+              "score": 0.5161
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types_struct.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5053
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction > Datatype Policy",
+              "score": 0.499
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.489
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q12",
+          "question": "How does the VSS overlay mechanism extend or delete signals without editing the standard catalog?",
+          "expectedSources": [
+            "docs-gen/content/extensions/overlay.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.6305
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "VSS usage for other domains",
+              "score": 0.6289
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "What is VSS?",
+              "score": 0.5779
+            },
+            {
+              "externalId": "docs-gen/content/extensions/network_serialization_profile.md",
+              "sectionHeading": "Network Serialization Profile",
+              "score": 0.5556
+            },
+            {
+              "externalId": "docs-gen/content/extensions/cybersecurity_profile.md",
+              "sectionHeading": "Cybersecurity Profile",
+              "score": 0.5525
+            },
+            {
+              "externalId": "docs-gen/content/policies/unit_datatype.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5371
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_types.md",
+              "sectionHeading": "Structs",
+              "score": 0.5335
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/data_units.md",
+              "sectionHeading": "Supported Data Units in VSS Standard Catalog > Addition of new Data Units to VSS standard catalog",
+              "score": 0.5192
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q13",
+          "question": "How does VSS model vehicle force distribution and braking requests in motion management?",
+          "expectedSources": [
+            "docs-gen/content/catalog/vehicle_motion_management.md"
+          ],
+          "expectedSection": "Braking System",
+          "retrievedSources": [
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Introduction",
+              "score": 0.5714
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Braking System",
+              "score": 0.5408
+            },
+            {
+              "externalId": "docs-gen/content/rule_set/data_entry/sensor_actuator.md",
+              "sectionHeading": "Property Types Overview > actuator type",
+              "score": 0.4684
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Definitions and Assumptions",
+              "score": 0.464
+            },
+            {
+              "externalId": "docs-gen/content/extensions/overlay.md",
+              "sectionHeading": "VSS Overlay Mechanism",
+              "score": 0.4452
+            },
+            {
+              "externalId": "docs-gen/content/catalog/vehicle_motion_management.md",
+              "sectionHeading": "Example 2 distribution request (Vehicle.MotionManagement.Brake.VehicleForceDistributionFrontMinimum/ Maximum)",
+              "score": 0.4382
+            },
+            {
+              "externalId": "docs-gen/content/introduction/overview.md",
+              "sectionHeading": "VSS usage for other domains",
+              "score": 0.4367
+            },
+            {
+              "externalId": "docs-gen/content/catalog/energy_management.md",
+              "sectionHeading": "Introduction",
+              "score": 0.416
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 2
+        },
+        {
+          "questionId": "q14",
+          "question": "How do controllers and routing decorators handle HTTP requests in NestJS?",
+          "expectedSources": [
+            "content/controllers.md"
+          ],
+          "expectedSection": "Routing",
+          "retrievedSources": [
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers",
+              "score": 0.7375
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Routing",
+              "score": 0.6395
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Resources",
+              "score": 0.6228
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Observing routes in production",
+              "score": 0.6076
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Request object",
+              "score": 0.5872
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Throwing standard exceptions",
+              "score": 0.587
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > State sharing",
+              "score": 0.5823
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Redirection",
+              "score": 0.5669
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 2
+        },
+        {
+          "questionId": "q15",
+          "question": "How does dependency injection work with Injectable providers in NestJS?",
+          "expectedSources": [
+            "content/components.md",
+            "content/fundamentals/dependency-injection.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Manual instantiation",
+              "score": 0.7176
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > DI fundamentals",
+              "score": 0.7127
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers",
+              "score": 0.7104
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers",
+              "score": 0.6921
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Optional providers",
+              "score": 0.6836
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Property-based injection",
+              "score": 0.6735
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Inquirer provider",
+              "score": 0.671
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > Factory providers: useFactory",
+              "score": 0.6601
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q16",
+          "question": "How can I define custom providers using useValue, useClass, and useFactory in NestJS?",
+          "expectedSources": [
+            "content/fundamentals/dependency-injection.md",
+            "content/components.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > Factory providers: useFactory",
+              "score": 0.7119
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Inquirer provider",
+              "score": 0.7085
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Usage",
+              "score": 0.6863
+            },
+            {
+              "externalId": "content/fundamentals/dependency-injection.md",
+              "sectionHeading": "Custom providers > Custom providers",
+              "score": 0.6654
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Property-based injection",
+              "score": 0.6558
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers",
+              "score": 0.644
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Introduction",
+              "score": 0.627
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Module configuration",
+              "score": 0.6215
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q17",
+          "question": "How do dynamic modules configure reusable NestJS modules with register or forRoot?",
+          "expectedSources": [
+            "content/fundamentals/dynamic-modules.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Community guidelines",
+              "score": 0.6879
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Dynamic module example",
+              "score": 0.6854
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules",
+              "score": 0.6824
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Module configuration",
+              "score": 0.6568
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Dynamic module example",
+              "score": 0.6476
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Configurable module builder",
+              "score": 0.621
+            },
+            {
+              "externalId": "content/application/configuration.md",
+              "sectionHeading": "Configuration > Partial registration",
+              "score": 0.6072
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Extending auto-generated methods",
+              "score": 0.6022
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q18",
+          "question": "What are NestJS exception filters and how do you bind a custom HttpExceptionFilter?",
+          "expectedSources": [
+            "content/exception-filters.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters",
+              "score": 0.8011
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Inheritance",
+              "score": 0.7718
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Built-in HTTP exceptions",
+              "score": 0.7324
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Exceptions logging",
+              "score": 0.7279
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Binding filters",
+              "score": 0.6809
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Custom exceptions",
+              "score": 0.653
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Handling errors",
+              "score": 0.6455
+            },
+            {
+              "externalId": "content/exception-filters.md",
+              "sectionHeading": "Exception filters > Exception filters",
+              "score": 0.6405
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q19",
+          "question": "How do NestJS authorization guards implement CanActivate using ExecutionContext?",
+          "expectedSources": [
+            "content/guards.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Authorization guard",
+              "score": 0.7615
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Role-based authentication",
+              "score": 0.6792
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Putting it all together",
+              "score": 0.6687
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Execution context",
+              "score": 0.6325
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards",
+              "score": 0.6052
+            },
+            {
+              "externalId": "content/fundamentals/execution-context.md",
+              "sectionHeading": "Execution context",
+              "score": 0.5956
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Binding guards",
+              "score": 0.5776
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Setting roles per handler",
+              "score": 0.5326
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q20",
+          "question": "How do NestJS interceptors wrap request and response streams with RxJS operators?",
+          "expectedSources": [
+            "content/interceptors.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Asynchronicity",
+              "score": 0.7061
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Response mapping",
+              "score": 0.697
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Aspect interception",
+              "score": 0.6928
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Exception mapping",
+              "score": 0.6702
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Call handler",
+              "score": 0.6647
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > Stream overriding",
+              "score": 0.6637
+            },
+            {
+              "externalId": "content/interceptors.md",
+              "sectionHeading": "Interceptors > More operators",
+              "score": 0.6615
+            },
+            {
+              "externalId": "content/guards.md",
+              "sectionHeading": "Guards > Authorization guard",
+              "score": 0.6027
+            }
+          ],
+          "firstRelevantRank": 2,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q21",
+          "question": "How do you create a custom parameter decorator using createParamDecorator in NestJS?",
+          "expectedSources": [
+            "content/custom-decorators.md"
+          ],
+          "expectedSection": "Param decorators",
+          "retrievedSources": [
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Validating custom decorators",
+              "score": 0.6519
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Working with pipes",
+              "score": 0.6312
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Passing data",
+              "score": 0.5414
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators",
+              "score": 0.5288
+            },
+            {
+              "externalId": "content/fundamentals/execution-context.md",
+              "sectionHeading": "Execution context > Low-level approach",
+              "score": 0.5106
+            },
+            {
+              "externalId": "content/fundamentals/execution-context.md",
+              "sectionHeading": "Execution context > Reflection and metadata",
+              "score": 0.4904
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Decorator composition",
+              "score": 0.4757
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Usage",
+              "score": 0.4667
+            }
+          ],
+          "firstRelevantRank": 2,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q22",
+          "question": "In what order do NestJS lifecycle hooks like OnModuleInit and OnModuleDestroy execute?",
+          "expectedSources": [
+            "content/fundamentals/lifecycle-events.md"
+          ],
+          "expectedSection": "Lifecycle sequence",
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Usage",
+              "score": 0.6679
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Lifecycle events",
+              "score": 0.6458
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events",
+              "score": 0.6241
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Community guidelines",
+              "score": 0.5998
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Lifecycle events",
+              "score": 0.5915
+            },
+            {
+              "externalId": "content/fundamentals/lifecycle-events.md",
+              "sectionHeading": "Lifecycle Events > Application shutdown",
+              "score": 0.5369
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Scopes",
+              "score": 0.5324
+            },
+            {
+              "externalId": "content/application/configuration.md",
+              "sectionHeading": "Configuration > Conditional module configuration",
+              "score": 0.5297
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q23",
+          "question": "How do singleton, request-scoped, and transient provider injection scopes behave in NestJS?",
+          "expectedSources": [
+            "content/fundamentals/provider-scopes.md"
+          ],
+          "expectedSection": "Provider scope",
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes",
+              "score": 0.7381
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > State sharing",
+              "score": 0.7341
+            },
+            {
+              "externalId": "content/components.md",
+              "sectionHeading": "Providers > Scopes",
+              "score": 0.6935
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Scope hierarchy",
+              "score": 0.6835
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Performance",
+              "score": 0.665
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Usage",
+              "score": 0.6475
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Community guidelines",
+              "score": 0.6386
+            },
+            {
+              "externalId": "content/fundamentals/provider-scopes.md",
+              "sectionHeading": "Injection scopes > Request provider",
+              "score": 0.637
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        },
+        {
+          "questionId": "q24",
+          "question": "How does NestJS Test.createTestingModule support unit testing services and controllers?",
+          "expectedSources": [
+            "content/fundamentals/unit-testing.md"
+          ],
+          "expectedSection": "Unit testing",
+          "retrievedSources": [
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Testing utilities",
+              "score": 0.6577
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Unit testing",
+              "score": 0.6387
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Installation",
+              "score": 0.6352
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing",
+              "score": 0.5994
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers",
+              "score": 0.5781
+            },
+            {
+              "externalId": "content/fundamentals/unit-testing.md",
+              "sectionHeading": "Testing > Auto mocking",
+              "score": 0.5591
+            },
+            {
+              "externalId": "content/first-steps.md",
+              "sectionHeading": "First steps > Setup",
+              "score": 0.5131
+            },
+            {
+              "externalId": "content/fundamentals/dynamic-modules.md",
+              "sectionHeading": "Dynamic modules > Module configuration",
+              "score": 0.5089
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": 2
+        },
+        {
+          "questionId": "q25",
+          "question": "How does NestJS ValidationPipe automatically transform and strip unknown DTO properties?",
+          "expectedSources": [
+            "content/application/validation.md"
+          ],
+          "retrievedSources": [
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Transform payload objects",
+              "score": 0.6633
+            },
+            {
+              "externalId": "content/controllers.md",
+              "sectionHeading": "Controllers > Request payloads",
+              "score": 0.6078
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Stripping properties",
+              "score": 0.596
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Using the built-in ValidationPipe",
+              "score": 0.5943
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation",
+              "score": 0.5921
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Auto-validation",
+              "score": 0.5863
+            },
+            {
+              "externalId": "content/application/validation.md",
+              "sectionHeading": "Validation > Explicit conversion",
+              "score": 0.5663
+            },
+            {
+              "externalId": "content/custom-decorators.md",
+              "sectionHeading": "Custom route decorators > Working with pipes",
+              "score": 0.5508
+            }
+          ],
+          "firstRelevantRank": 1,
+          "firstSectionMatchRank": null
+        }
+      ]
+    }
+  ]
+}

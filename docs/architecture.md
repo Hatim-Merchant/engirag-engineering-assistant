@@ -1,6 +1,6 @@
 # EngiRAG Architecture Overview
 
-> Status: **Phases 1–4** completed (Infrastructure + Document Ingestion + Retrieval, LLM & `POST /ask` API + Vue 3 SPA). Phase 5 will add retrieval evaluation benchmarks (`Hit@k` / `MRR`).
+> Status: **All 5 Phases Complete** (Infrastructure + Ingestion/Embeddings + Retrieval/RAG API + Vue 3 SPA + Retrieval Evaluation). See also [interview-guide.md](interview-guide.md) and [retrieval-evaluation.md](../evaluation/results/retrieval-evaluation.md).
 
 ## System Architecture
 

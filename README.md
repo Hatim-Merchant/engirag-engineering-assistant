@@ -2,38 +2,20 @@
 
 EngiRAG is a portfolio-grade Retrieval-Augmented Generation (RAG) web application built with TypeScript, NestJS, Vue 3, PostgreSQL (`pgvector`), and local CPU embeddings (`Transformers.js`). It answers technical engineering questions exclusively from indexed public documentation and provides verifiable numbered citations (`[1]`, `[2]`) linked directly to original documentation pages and section anchors.
 
-> **Project Status**: **Phase 4 (Vue 3 Frontend)** complete. Phase 5 will add the 25-question retrieval evaluation benchmark (`Hit@k` and `MRR`) and final public release documentation.
+> **Project Status**: **All 5 Phases Complete** — Infrastructure Foundation, Markdown Ingestion + Local Embeddings, Retrieval + Grounded `POST /ask`, Vue 3 SPA, and Empirical Retrieval Evaluation (`Hit@k` & `MRR`).
 
 ## Screenshot
 
-_Placeholder — UI screenshot will be captured and linked after Phase 5 verification._
+_Screenshot Placeholder — once running locally (`http://localhost:5173`), capture a screenshot of a grounded question with expanded retrieved sources and save it to `docs/engirag-ui.png` (then replace this note with `![EngiRAG UI](docs/engirag-ui.png)`)._
 
 ## Features
 
-- **Phase 1 (Implemented)**:
-  - Strict TypeScript NestJS backend with Zod startup environment validation
-  - Direct PostgreSQL connectivity using `pg` connection pooling and plain SQL migrations
-  - Docker Compose setup with `pgvector/pgvector:pg16` and an HNSW cosine vector index
-  - `GET /health` endpoint verifying application and PostgreSQL readiness
-  - ESLint, Prettier, Jest unit tests, and GitHub Actions CI (`lint`, `format:check`, `test`, `build`)
-- **Phase 2 (Implemented)**:
-  - Standalone document ingestion CLI (`npm run ingest`) fetching curated public Markdown pages directly over HTTPS (without cloning entire repositories)
-  - Markdown parser preserving heading hierarchy (`H1 > H2 > H3`), ignoring `#` comments inside fenced code blocks, cleaning Hugo shortcodes and Dgeni `@@switch` blocks, and generating deterministic URL anchors
-  - Two-stage heading-aware + token-aware chunking with configurable chunk size (`CHUNK_SIZE_TOKENS=500`) and overlap (`CHUNK_OVERLAP_TOKENS=75`)
-  - Local CPU vector embeddings via `@huggingface/transformers` (`Xenova/all-MiniLM-L6-v2`, 384 dimensions) behind an `EmbeddingProvider` interface
-  - SHA-256 content-hash duplicate detection and transactional re-ingestion (`DELETE` + `INSERT` inside `withTransaction`) so updated documents leave no obsolete chunks behind
-- **Phase 3 (Implemented)**:
-  - `RetrievalService` computing query embeddings locally and ranking top-k chunks via `pgvector` cosine similarity (`1 - (embedding <=> query)`) with configurable `RETRIEVAL_MIN_SCORE`
-  - `LlmProvider` interface supporting Groq (via official `openai` SDK with custom `baseURL`) and optional Gemini (`LLM_PROVIDER=groq|gemini`)
-  - Bounded exponential backoff retries (`maxRetries=3`, `500ms -> 1000ms -> 2000ms`) for HTTP `429` and transient `502`/`503`/`504` errors, with `20s` timeouts and zero API key logging
-  - `POST /ask` endpoint with Zod input validation, grounded prompt construction, inline `[n]` citation validation, and explicit insufficient-context fallback
-- **Phase 4 (Implemented)**:
-  - Vue 3 (`<script setup lang="ts">`) interface built with Vite and strict TypeScript
-  - Separated typed API service (`frontend/src/services/rag-api.ts`) and XSS-safe inline citation parser (`parseAnswerSegments`)
-  - Clickable `[1]`, `[2]` citation links opening the original documentation page and `#section` anchor, plus collapsible retrieved passages with similarity scores and verbatim excerpts
-  - Explicit empty, loading, and error states plus Vitest + Vue Test Utils component tests
-- **Planned (Phase 5)**:
-  - Reproducible retrieval evaluation benchmark (`Hit@k` and `MRR`) across chunk sizes (`300`, `500`, `800`) and `k` values (`3`, `5`, `8`)
+- **Heading-Aware Markdown Ingestion (`npm run ingest`)**: Fetches 36 curated public Markdown files directly over HTTPS (20 COVESA VSS + 16 NestJS), preserves `H1 > H2 > H3` hierarchy, ignores `#` comments inside code fences, generates deterministic `#section` anchors, and uses SHA-256 content hashes + SQL transactions for idempotent re-ingestion.
+- **Two-Stage Chunking & Local CPU Embeddings**: Splits sections at heading boundaries first, then splits oversized sections along paragraph/sentence boundaries with overlap (`CHUNK_SIZE_TOKENS=500`, `CHUNK_OVERLAP_TOKENS=75`). Generates 384-dimensional normalized vectors locally via `@huggingface/transformers` (`Xenova/all-MiniLM-L6-v2`).
+- **pgvector Cosine Retrieval & Grounded `POST /ask`**: Searches PostgreSQL with an HNSW index (`vector_cosine_ops`), filters below `RETRIEVAL_MIN_SCORE` (`0.35`), builds context-restricted prompts, validates inline `[1]`, `[2]` citations, and falls back explicitly when evidence is insufficient.
+- **Provider Abstraction & Resilience**: `LlmProvider` interface supporting Groq (via official `openai` SDK) and optional Gemini, with `20s` timeouts and bounded exponential backoff retries on `429` / `502` / `503` / `504`.
+- **Vue 3 Composition API Frontend**: Clean `<script setup lang="ts">` SPA with clickable `[1]`, `[2]` documentation links, collapsible retrieved passages with cosine similarity scores, and explicit empty/loading/error states.
+- **Reproducible Retrieval Evaluation (`npm run evaluate`)**: Automated benchmark over 25 technical questions comparing `300`, `500`, and `800` token chunks across `k = 3, 5, 8` using `Hit@k` and `MRR`.
 
 ## Architecture
 
@@ -120,11 +102,20 @@ curl http://localhost:3000/health
 
 ## Docker Compose Instructions
 
-Start PostgreSQL with `pgvector`:
+Start only PostgreSQL + `pgvector` (for local hot-reload development of backend and frontend):
 
 ```bash
 docker compose up -d postgres
 ```
+
+Or build and run the full stack (`postgres` + `backend` + `frontend`) with Docker Compose:
+
+```bash
+cp .env.example .env   # Add your GROQ_API_KEY
+docker compose up -d --build
+```
+
+*(Note: on a fresh database started with `docker compose`, run `npm run ingest` once from the host or backend container to populate `document_chunks`.)*
 
 Check container status and logs:
 
@@ -230,13 +221,30 @@ LLM calls sit behind the `LlmProvider` contract (`backend/src/llm/llm.provider.t
 
 ## Evaluation Methodology & Results
 
-_Pending Phase 5 execution. No benchmark numbers will be added until experiments actually run._
+Retrieval quality was evaluated via `npm run evaluate` (`backend/scripts/evaluate.ts`) against `evaluation/questions.json` (**25 technical questions**: 13 COVESA VSS + 12 NestJS) using real `Xenova/all-MiniLM-L6-v2` embeddings and live `pgvector` retrieval across chunk sizes `300`, `500`, and `800` tokens (`chunkOverlapTokens = 75`, `minScore = 0` over top-8 candidates so `Hit@3`, `Hit@5`, and `Hit@8` capture pure ranking quality).
 
-| Chunk Size | Top-k | Hit@k | MRR | Status |
-| --- | --- | --- | --- | --- |
-| 300 tokens | 3 / 5 / 8 | Pending | Pending | Pending |
-| 500 tokens | 3 / 5 / 8 | Pending | Pending | Pending |
-| 800 tokens | 3 / 5 / 8 | Pending | Pending | Pending |
+Full raw outputs and per-question diagnostics are saved in [retrieval-evaluation.md](evaluation/results/retrieval-evaluation.md) and [retrieval-evaluation.json](evaluation/results/retrieval-evaluation.json).
+
+### Actual Measured Results
+
+| Chunk Size | Total Chunks | Top-k | Hits | Hit@k | MRR | Section Hit@k |
+| --- | --- | --- | --- | --- | --- | --- |
+| 300 tokens | 479 | 3 | 24/25 | 0.9600 (96.0%) | 0.9133 | 7/14 (50.0%) |
+| 300 tokens | 479 | 5 | 25/25 | 1.0000 (100.0%) | 0.9213 | 10/14 (71.4%) |
+| 300 tokens | 479 | 8 | 25/25 | 1.0000 (100.0%) | 0.9213 | 11/14 (78.6%) |
+| **500 tokens** | **362** | **3** | **25/25** | **1.0000 (100.0%)** | **0.9400** | **8/14 (57.1%)** |
+| **500 tokens** | **362** | **5** | **25/25** | **1.0000 (100.0%)** | **0.9400** | **10/14 (71.4%)** |
+| **500 tokens** | **362** | **8** | **25/25** | **1.0000 (100.0%)** | **0.9400** | **11/14 (78.6%)** |
+| 800 tokens | 312 | 3 | 25/25 | 1.0000 (100.0%) | 0.9200 | 9/14 (64.3%) |
+| 800 tokens | 312 | 5 | 25/25 | 1.0000 (100.0%) | 0.9200 | 10/14 (71.4%) |
+| 800 tokens | 312 | 8 | 25/25 | 1.0000 (100.0%) | 0.9200 | 10/14 (71.4%) |
+
+### Analysis & Trade-offs
+
+- **500-token chunks achieved the highest MRR (`0.9400`) and `100%` Hit@3/5/8**: On 22 of 25 questions, the expected source document ranked #1 (and #2 on the remaining 3, where cross-cutting pages like `policies/unit_datatype.md` or `application/validation.md` shared high topical overlap).
+- **300-token chunks (`479` chunks, `19.08s` ingestion)**: Doubled chunk count and slowed CPU embedding generation, while dropping Hit@3 slightly to `96.0%` (`MRR = 0.9133`) because finer splitting occasionally separated context across adjacent chunks.
+- **800-token chunks (`312` chunks, `8.50s` ingestion)**: Lowered MRR to `0.9200` and capped Section Hit@8 at `71.4%` (`10/14` vs. `11/14` for 300/500), consistent with `all-MiniLM-L6-v2` truncating inputs beyond 256 WordPiece tokens and diluting multi-paragraph embeddings.
+- **What `Hit@k` and `MRR` measure (and do not measure)**: `Hit@k` measures top-k source recall and `MRR` measures rank-1 precision for the first relevant source page; neither measures LLM answer faithfulness, citation accuracy, or end-to-end latency.
 
 ## Design Decisions and Trade-offs
 
@@ -247,9 +255,11 @@ _Pending Phase 5 execution. No benchmark numbers will be added until experiments
 
 ## Limitations
 
-- Phases 1–4 cover infrastructure, ingestion, retrieval, grounded `POST /ask`, and the Vue 3 web interface; empirical `Hit@k`/`MRR` retrieval evaluation benchmarks across chunk sizes are deferred to Phase 5.
-- `estimateTokenCount` uses an offline subword-approximation regex rather than running the Hugging Face WordPiece tokenizer directly, so actual model token counts can differ slightly from configured chunk limits.
-- Syntactic citation validation (`[1]..[k]`) removes out-of-range markers and blocks uncited claims, but does not verify semantic entailment between a claim and its cited excerpt.
+- **Dense-only retrieval**: Relies purely on cosine similarity over dense embeddings without BM25/lexical hybrid search, so rare identifiers or exact symbol names can rank behind conceptually broader pages.
+- **256-token transformer window**: `Xenova/all-MiniLM-L6-v2` truncates inputs past ~256 WordPiece tokens, reducing representation fidelity for the tail of long sections.
+- **Regex token approximation**: `estimateTokenCount` approximates subword tokens offline rather than invoking the exact Hugging Face WordPiece tokenizer.
+- **Syntactic vs. semantic citation checking**: Bracket validation (`[1]..[k]`) removes out-of-range markers and blocks uncited responses, but cannot prove semantic entailment between a claim and its cited excerpt.
+- **Single-turn stateless UI**: Each question is answered independently without multi-turn conversation memory.
 
 ## Testing Instructions
 
@@ -279,12 +289,14 @@ engirag-engineering-assistant/
 │   ├── migrations/
 │   │   └── 001_initial_schema.sql
 │   ├── scripts/
+│   │   ├── evaluate.ts
 │   │   ├── ingest.ts
 │   │   └── migrate.ts
 │   ├── src/
 │   │   ├── config/
 │   │   ├── database/
 │   │   ├── embeddings/
+│   │   ├── evaluation/
 │   │   ├── health/
 │   │   ├── ingestion/
 │   │   ├── common/
@@ -302,9 +314,13 @@ engirag-engineering-assistant/
 │   ├── tsconfig.build.json
 │   └── tsconfig.json
 ├── docs/
-│   └── architecture.md
+│   ├── architecture.md
+│   └── interview-guide.md
 ├── evaluation/
+│   ├── questions.json
 │   └── results/
+│       ├── retrieval-evaluation.json
+│       └── retrieval-evaluation.md
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
@@ -349,4 +365,7 @@ Only Markdown documentation files listed in `backend/src/ingestion/documentation
 
 ## Future Improvements
 
-- Phase 5: 25-question retrieval evaluation dataset and `Hit@k` / `MRR` comparison across `300`, `500`, and `800` token chunks and `k = 3, 5, 8`.
+- **Hybrid Retrieval (BM25 + Dense + RRF)**: Combine PostgreSQL full-text search (`tsvector`/`tsquery`) with `pgvector` cosine similarity using Reciprocal Rank Fusion to sharpen exact symbol and signal-path lookups.
+- **Cross-Encoder Reranking**: Rerank top-10 candidates locally with a lightweight cross-encoder before selecting top-5 context chunks.
+- **Automated Groundedness / Faithfulness Evaluation**: Add LLM-as-a-judge or NLI entailment checks over a manual answer-quality review set alongside retrieval `Hit@k`/`MRR`.
+- **Docker Compose Auto-Seed Job**: Add an optional one-shot init/ingest container profile so fresh Docker deployments populate the vector store automatically.

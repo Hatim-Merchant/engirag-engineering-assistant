@@ -14,7 +14,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "migrate": "ts-node scripts/migrate.ts",
-    "ingest": "ts-node scripts/ingest.ts"
+    "ingest": "ts-node scripts/ingest.ts",
+    "evaluate": "ts-node scripts/evaluate.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^4.3.2",

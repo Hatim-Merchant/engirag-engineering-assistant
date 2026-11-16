@@ -11,6 +11,7 @@
     "dev:frontend": "npm --prefix frontend run dev",
     "migrate": "npm --prefix backend run migrate",
     "ingest": "npm --prefix backend run ingest",
+    "evaluate": "npm --prefix backend run evaluate",
     "format": "npm --prefix backend run format && npm --prefix frontend run format",
     "format:check": "npm --prefix backend run format:check && npm --prefix frontend run format:check"
   }
