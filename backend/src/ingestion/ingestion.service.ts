@@ -261,7 +261,9 @@ export class IngestionService {
     const allVectors: number[][] = [];
 
     for (let i = 0; i < chunks.length; i += EMBEDDING_BATCH_SIZE) {
-      const batchTexts = chunks.slice(i, i + EMBEDDING_BATCH_SIZE).map((chunk) => chunk.chunkText);
+      const batchTexts = chunks
+        .slice(i, i + EMBEDDING_BATCH_SIZE)
+        .map((chunk) => `${chunk.documentTitle} — ${chunk.sectionHeading}\n\n${chunk.chunkText}`);
       const batchVectors = await this.embeddingProvider.embedDocuments(batchTexts);
       allVectors.push(...batchVectors);
     }

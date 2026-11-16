@@ -80,6 +80,11 @@ export function parseAnswerSegments(
   answer: string,
   sources: readonly CitationSource[],
 ): AnswerSegment[] {
+  const cleanedAnswer = answer
+    .replace(/\*{1,3}\s*(\[\s*\d+\s*\])\s*\*{1,3}/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, '$1');
+
   const sourceByNumber = new Map<number, CitationSource>();
   for (const source of sources) {
     sourceByNumber.set(source.number, source);
@@ -89,12 +94,12 @@ export function parseAnswerSegments(
   const pattern = /\[(\d+)\]/g;
   let lastIndex = 0;
 
-  for (const match of answer.matchAll(pattern)) {
+  for (const match of cleanedAnswer.matchAll(pattern)) {
     const matchIndex = match.index ?? 0;
     if (matchIndex > lastIndex) {
       segments.push({
         type: 'text',
-        text: answer.slice(lastIndex, matchIndex),
+        text: cleanedAnswer.slice(lastIndex, matchIndex),
       });
     }
 
@@ -119,10 +124,10 @@ export function parseAnswerSegments(
     lastIndex = matchIndex + match[0].length;
   }
 
-  if (lastIndex < answer.length) {
+  if (lastIndex < cleanedAnswer.length) {
     segments.push({
       type: 'text',
-      text: answer.slice(lastIndex),
+      text: cleanedAnswer.slice(lastIndex),
     });
   }
 

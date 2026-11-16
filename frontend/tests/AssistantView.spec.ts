@@ -145,4 +145,29 @@ describe('AssistantView', () => {
     expect(errorBanner.text()).toContain('Groq rate limit exceeded after bounded retries.');
     expect(wrapper.find('.answer-card').exists()).toBe(false);
   });
+
+  it('strips Markdown asterisks around text and citation badges', async () => {
+    askQuestionMock.mockResolvedValueOnce({
+      answer:
+        '1. **Declare a provider** – A class uses *constructor injection*. *[1]* Also see [2].',
+      sources: sampleResponse.sources,
+    });
+
+    const wrapper = mount(AssistantView);
+    await wrapper.find('#question-textarea').setValue('How does dependency injection work?');
+    await wrapper.find('form').trigger('submit');
+    await flushPromises();
+
+    const answerBody = wrapper.find('.answer-body');
+    expect(answerBody.exists()).toBe(true);
+    expect(answerBody.text()).not.toContain('*');
+    expect(answerBody.text()).toContain(
+      '1. Declare a provider – A class uses constructor injection.',
+    );
+
+    const citationLinks = wrapper.findAll('.citation-badge');
+    expect(citationLinks).toHaveLength(2);
+    expect(citationLinks[0]?.text()).toBe('[1]');
+    expect(citationLinks[1]?.text()).toBe('[2]');
+  });
 });

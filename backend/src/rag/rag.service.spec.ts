@@ -124,6 +124,23 @@ describe('RagService', () => {
     expect(result.sources).toHaveLength(2);
   });
 
+  it('strips Markdown asterisks and inline formatting around text and citations', async () => {
+    retrieveMock.mockResolvedValueOnce(sampleChunks);
+    generateMock.mockResolvedValueOnce({
+      content:
+        '1. **Declare a provider** – Use `@Injectable()` to mark the class. *[1]*\n2. *Register types* – Standard types are listed in the catalog. **[[2]](https://example.com)**',
+      model: 'openai/gpt-oss-20b',
+      provider: 'groq',
+    });
+
+    const result = await ragService.answerQuestion({ question: 'What is VSS?' });
+
+    expect(result.answer).toBe(
+      '1. Declare a provider – Use @Injectable() to mark the class. [1]\n2. Register types – Standard types are listed in the catalog. [2]',
+    );
+    expect(result.sources).toHaveLength(2);
+  });
+
   it('falls back safely when the LLM output contains no valid citations', async () => {
     retrieveMock.mockResolvedValueOnce(sampleChunks);
     generateMock.mockResolvedValueOnce({

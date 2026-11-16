@@ -11,7 +11,7 @@ import { LLM_RETRY_OPTIONS, RetryOptions, extractStatusCode, withBoundedRetry } 
 
 const DEFAULT_TIMEOUT_MS = 20_000;
 const DEFAULT_TEMPERATURE = 0.1;
-const DEFAULT_MAX_TOKENS = 600;
+const DEFAULT_MAX_TOKENS = 1500;
 
 @Injectable()
 export class GroqLlmProvider implements LlmProvider {

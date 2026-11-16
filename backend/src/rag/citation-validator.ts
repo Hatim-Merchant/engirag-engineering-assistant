@@ -27,7 +27,15 @@ export function validateAndSanitizeCitations(
   const validCitations = new Set<number>();
   const invalidCitations = new Set<number>();
 
-  const sanitizedRaw = rawAnswer.replace(
+  // Normalize accidental Markdown formatting (bold/italic asterisks, citation links, inline code).
+  const normalizedRaw = rawAnswer
+    .replace(/\[(\[\s*\d+(?:\s*,\s*\d+)*\s*\])\]\([^)]+\)/g, '$1')
+    .replace(/\*{1,3}\s*(\[\s*\d+(?:\s*,\s*\d+)*\s*\])\s*\*{1,3}/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, '$1')
+    .replace(/`([^`\n]+)`/g, '$1');
+
+  const sanitizedRaw = normalizedRaw.replace(
     /\[(\s*\d+(?:\s*,\s*\d+)*\s*)\]/g,
     (_fullMatch, innerGroup: string) => {
       const numbers = innerGroup

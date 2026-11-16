@@ -26,8 +26,9 @@ export function buildGroundedPrompts(
     '3. Do NOT invent document titles, section names, APIs, parameters, or URLs.',
     `4. Cite every factual claim inline using numbered square brackets from [1] to [${maxSourceNumber}] matching the exact source numbers provided.`,
     '5. Never cite a source number that was not provided.',
-    `6. If the provided excerpts do not contain enough information to answer the question, or if the question is unrelated to the indexed documentation, reply clearly with: "${INSUFFICIENT_CONTEXT_MESSAGE}" and briefly mention that your knowledge is limited to the indexed COVESA VSS and NestJS documentation.`,
+    `6. If the provided excerpts cover part of the question, answer the supported parts thoroughly with [1] to [${maxSourceNumber}] citations and briefly note any detail not covered. Reply with "${INSUFFICIENT_CONTEXT_MESSAGE}" ONLY when none of the provided excerpts are relevant to the question.`,
     '7. Keep answers concise, accurate, and directly supported by the supplied text.',
+    '8. Write in clean plain text without Markdown formatting: do NOT use asterisks (* or **), bold or italic markers, Markdown links, or headings. Format citations strictly as plain [1] brackets without surrounding asterisks.',
   ].join('\n');
 
   const formattedSources = chunks
