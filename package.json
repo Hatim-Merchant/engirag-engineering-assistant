@@ -9,6 +9,7 @@
     "build": "npm --prefix backend run build",
     "start:dev": "npm --prefix backend run start:dev",
     "migrate": "npm --prefix backend run migrate",
+    "ingest": "npm --prefix backend run ingest",
     "format": "npm --prefix backend run format",
     "format:check": "npm --prefix backend run format:check"
   }

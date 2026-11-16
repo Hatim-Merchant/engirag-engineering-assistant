@@ -2,7 +2,7 @@
 
 EngiRAG is a portfolio-grade Retrieval-Augmented Generation (RAG) web application built with TypeScript, NestJS, Vue 3, PostgreSQL (`pgvector`), and local CPU embeddings (`Transformers.js`). It answers technical engineering questions exclusively from indexed public documentation and provides verifiable numbered citations (`[1]`, `[2]`) linked directly to original documentation pages and section anchors.
 
-> **Project Status**: Phase 1 (Repository and Infrastructure Foundation) complete. Subsequent phases will add document ingestion, semantic retrieval, grounded LLM answering, the Vue 3 interface, and retrieval evaluation.
+> **Project Status**: **Phase 2 (Document Ingestion and Chunking)** complete. Subsequent phases will add pgvector semantic retrieval + grounded LLM answering (`POST /ask`), the Vue 3 web interface, and reproducible retrieval evaluation (`Hit@k` / `MRR`).
 
 ## Screenshot
 
@@ -16,8 +16,13 @@ _Placeholder — UI screenshot will be added after Phase 4 (Vue 3 frontend) is c
   - Docker Compose setup with `pgvector/pgvector:pg16` and an HNSW cosine vector index
   - `GET /health` endpoint verifying application and PostgreSQL readiness
   - ESLint, Prettier, Jest unit tests, and GitHub Actions CI (`lint`, `format:check`, `test`, `build`)
-- **Planned (Phases 2–5)**:
-  - Heading-aware Markdown ingestion CLI with local Transformers.js embeddings (`Xenova/all-MiniLM-L6-v2`)
+- **Phase 2 (Implemented)**:
+  - Standalone document ingestion CLI (`npm run ingest`) fetching curated public Markdown pages directly over HTTPS (without cloning entire repositories)
+  - Markdown parser preserving heading hierarchy (`H1 > H2 > H3`), ignoring `#` comments inside fenced code blocks, cleaning Hugo shortcodes and Dgeni `@@switch` blocks, and generating deterministic URL anchors
+  - Two-stage heading-aware + token-aware chunking with configurable chunk size (`CHUNK_SIZE_TOKENS=500`) and overlap (`CHUNK_OVERLAP_TOKENS=75`)
+  - Local CPU vector embeddings via `@huggingface/transformers` (`Xenova/all-MiniLM-L6-v2`, 384 dimensions) behind an `EmbeddingProvider` interface
+  - SHA-256 content-hash duplicate detection and transactional re-ingestion (`DELETE` + `INSERT` inside `withTransaction`) so updated documents leave no obsolete chunks behind
+- **Planned (Phases 3–5)**:
   - Grounded `POST /ask` endpoint with Groq (and optional Gemini) behind an `LlmProvider` interface
   - Vue 3 (`script setup`) chat interface with clickable numbered citations and collapsible source passages
   - Reproducible retrieval evaluation benchmark (`Hit@k` and `MRR`) across chunk sizes and `k` values
@@ -29,11 +34,12 @@ flowchart LR
   Client["Vue 3 Frontend (Phase 4)"] -->|"HTTP REST"| API["NestJS Backend"]
   API -->|"GET /health"| Health["HealthModule"]
   API -->|"POST /ask (Phase 3)"| RAG["RagService"]
-  RAG -->|"Local 384d CPU embeddings"| Embeddings["EmbeddingProvider (Phase 2/3)"]
+  RAG -->|"Local 384d CPU embeddings"| Embeddings["EmbeddingProvider (Transformers.js)"]
   RAG -->|"Top-k cosine search (<=>)"| DB[("PostgreSQL + pgvector")]
   RAG -->|"Prompt + retries"| LLM["LlmProvider: Groq / Gemini (Phase 3)"]
-  CLI["Ingestion CLI (Phase 2)"] -->|"Markdown chunks + vectors"| DB
-  CLI --> Embeddings
+  CLI["Ingestion CLI (Phase 2)"] -->|"Fetch curated Markdown"| GitHub["Public Docs Repos (GitHub Raw)"]
+  CLI -->|"2-stage chunking + 384d vectors"| Embeddings
+  CLI -->|"Transactional upsert + chunk replace"| DB
 ```
 
 ## Technology Stack
@@ -41,11 +47,11 @@ flowchart LR
 - **Backend**: Node.js LTS, TypeScript (`strict: true`), NestJS, Zod, `pg` (plain SQL, no ORM), Jest
 - **Frontend (Phase 4)**: Vue 3 (`script setup`), TypeScript, Vite, Vitest, Vue Test Utils
 - **Vector Store**: PostgreSQL 16 + `pgvector` (HNSW index with `vector_cosine_ops`)
-- **Embeddings (Phase 2/3)**: Transformers.js (`Xenova/all-MiniLM-L6-v2`, local CPU, 384 dimensions)
+- **Embeddings**: `@huggingface/transformers` (`^4.3.2`) running `Xenova/all-MiniLM-L6-v2` locally on CPU (384 dimensions)
 - **LLM Inference (Phase 3)**: Groq via OpenAI-compatible SDK (`LlmProvider` interface), optional Gemini
 - **Infrastructure**: Docker, Docker Compose, ESLint, Prettier, GitHub Actions
 
-## Quickstart (Phase 1)
+## Quickstart
 
 ### Prerequisites
 
@@ -72,7 +78,18 @@ npm install
 npm run migrate
 ```
 
-### 4. Start the Backend Server
+### 4. Ingest Public Documentation
+
+```bash
+# Ingest all curated COVESA VSS and NestJS documentation pages
+npm run ingest
+
+# Optional flags:
+# npm run ingest -- --source=covesa_vss --limit=5
+# npm run ingest -- --chunk-size=300 --chunk-overlap=50 --force
+```
+
+### 5. Start the Backend Server
 
 ```bash
 npm run start:dev
@@ -126,22 +143,49 @@ docker compose down
 | `GROQ_MODEL` | `llama-3.1-8b-instant` | Groq model name |
 | `GEMINI_API_KEY` | `""` | Optional Gemini API key (Phase 3) |
 | `GEMINI_MODEL` | `gemini-2.5-flash` | Gemini model name |
-| `CHUNK_SIZE_TOKENS` | `500` | Target maximum token count per chunk (Phase 2) |
-| `CHUNK_OVERLAP_TOKENS` | `75` | Overlap tokens between adjacent oversized chunks (Phase 2) |
+| `CHUNK_SIZE_TOKENS` | `500` | Target maximum token count per chunk |
+| `CHUNK_OVERLAP_TOKENS` | `75` | Overlap tokens between adjacent oversized chunks |
 | `RETRIEVAL_TOP_K` | `5` | Maximum chunks retrieved per query (Phase 3) |
 | `RETRIEVAL_MIN_SCORE` | `0.35` | Minimum cosine similarity threshold for retrieved chunks (Phase 3) |
 
 ## Ingestion Process
 
-_Pending Phase 2 implementation._
+The standalone CLI (`backend/scripts/ingest.ts`) runs inside a headless NestJS `ApplicationContext` without starting the HTTP server:
+
+1. Fetches a curated list of public Markdown files (`DOCUMENTATION_SOURCES` in `backend/src/ingestion/documentation-sources.ts`) via HTTPS with a 15-second timeout.
+2. Computes a SHA-256 hash combining the raw Markdown content, `chunkSizeTokens`, `chunkOverlapTokens`, and `embeddingModel`.
+3. Skips unchanged documents whose stored `content_hash` already matches (unless `--force` is passed).
+4. Parses and chunks changed/new documents using the two-stage chunker (`chunkMarkdownDocument`).
+5. Generates 384-dimensional normalized embeddings in batches of 16 using `TransformersEmbeddingProvider`.
+6. Inside a single PostgreSQL transaction (`DatabaseService.withTransaction`), upserts the `documents` row, deletes any previous `document_chunks` rows for that `document_id`, and inserts the new chunks so updates never leave orphaned chunks behind.
+7. Reports counts for documents fetched, processed, skipped, chunks created, embeddings generated, database records affected, and explicit per-stage errors (`fetch`, `chunk`, `embed`, `database`).
 
 ## Chunking Strategy
 
-_Pending Phase 2 implementation._
+EngiRAG uses a **two-stage heading-aware chunking pipeline** (`backend/src/ingestion/markdown-parser.ts` and `chunker.ts`):
+
+1. **Stage 1 – Heading-Boundary Separation**:
+   - Strips generator artifacts (YAML frontmatter, Hugo `{{% notice %}}` wrappers, `<figure>` tags, and NestJS Dgeni `@@filename` / `@@switch` JavaScript duplicates).
+   - Tracks fenced code blocks (```` ``` ```` / `~~~`) so `#` comments inside YAML, TypeScript, or bash examples are never mistaken for headings.
+   - Splits content along Markdown headings while preserving full heading paths (e.g., `Controllers > Routing`) and deterministic section anchors (`#routing`). Unrelated sections are never merged into the same chunk.
+2. **Stage 2 – Bounded Size Splitting with Overlap**:
+   - Sections exceeding `CHUNK_SIZE_TOKENS` (default `500`) are split along paragraph boundaries (keeping fenced code blocks intact where possible), then sentence boundaries, and finally token windows as a fallback for unusually long blocks.
+   - Adjacent chunks within the same oversized section carry up to `CHUNK_OVERLAP_TOKENS` (default `75`) trailing units forward so context split at a boundary remains recoverable.
+
+**Trade-offs of initial defaults (`500` tokens, `75` overlap)**:
+- Smaller chunks (`300` tokens) produce sharper single-fact embeddings but risk splitting code examples from surrounding explanations.
+- Larger chunks (`800` tokens) preserve broad context but dilute vector specificity when multiple concepts share one embedding (`all-MiniLM-L6-v2` truncates inputs beyond ~256 WordPiece tokens anyway).
+- `500` tokens (estimated with an offline subword-style heuristic) serves as an initial baseline that will be evaluated empirically in Phase 5 against `300` and `800`.
 
 ## Embedding Model Selection
 
-_Pending Phase 2 verification of library version, compatibility, and output dimensions (`Xenova/all-MiniLM-L6-v2` planned, 384d)._
+- **Package**: `@huggingface/transformers` (`^4.3.2`, the official v3/v4 successor to `@xenova/transformers`, providing native Node CommonJS exports `./dist/transformers.node.cjs` and TypeScript declarations).
+- **Model**: `Xenova/all-MiniLM-L6-v2` running locally on CPU (`dtype: 'fp32'`, mean pooling, L2-normalized outputs of **384 dimensions**).
+- **Why chosen**: Zero API cost, no rate limits during batch ingestion, deterministic offline behavior after initial model caching, and compact 384d vectors that fit fast in-memory HNSW indexes.
+- **Known Limitations**:
+  - Trained primarily on English general-domain semantic similarity pairs rather than specialized automotive or NestJS TypeScript jargon.
+  - Truncates long passages at its transformer sequence limit (256 WordPiece tokens), meaning information near the very end of large (~500–800 token) chunks contributes less to the vector representation.
+  - Preprocessing (`normalizeEmbeddingInput`) and the `EmbeddingProvider` contract are shared between ingestion and retrieval so vectors always live in the same embedding space.
 
 ## Retrieval Methodology
 
@@ -169,11 +213,13 @@ _Pending Phase 5 execution. No benchmark numbers will be added until experiments
 
 - **PostgreSQL + `pgvector` over a standalone vector database**: Reduces operational complexity (one database for relational document metadata and vector embeddings) and provides ACID transactions when updating or replacing document chunks.
 - **Plain SQL with `pg` over an ORM**: Gives full control over SQL migrations, `vector(384)` types, HNSW indexing parameters, and parameterized queries.
-- **Zod startup validation**: Catches misconfigured environment variables immediately on startup with safe, field-level diagnostics.
+- **Curated raw Markdown fetches over full repo cloning**: Downloading only selected documentation pages keeps ingestion fast, transparent, and decoupled from unrelated build/asset files in upstream repositories.
+- **Local CPU embeddings over paid embedding APIs**: Eliminates recurring API costs and external rate limits during document ingestion and evaluation experiments, at the cost of slower CPU throughput and a 256-token model sequence ceiling.
 
 ## Limitations
 
-- Phase 1 establishes the backend infrastructure, database schema, and CI foundation; ingestion, retrieval, LLM integration, frontend UI, and evaluation benchmarks are intentionally deferred to Phases 2–5.
+- Phases 1–2 cover infrastructure, database schema, ingestion, chunking, and local embeddings; query retrieval, LLM grounding (`POST /ask`), frontend UI, and empirical retrieval benchmarks are deferred to Phases 3–5.
+- `estimateTokenCount` uses an offline subword-approximation regex rather than running the Hugging Face WordPiece tokenizer directly, so actual model token counts can differ slightly from configured chunk limits.
 
 ## Testing Instructions
 
@@ -202,15 +248,16 @@ engirag-engineering-assistant/
 │   ├── migrations/
 │   │   └── 001_initial_schema.sql
 │   ├── scripts/
+│   │   ├── ingest.ts
 │   │   └── migrate.ts
 │   ├── src/
 │   │   ├── config/
 │   │   ├── database/
+│   │   ├── embeddings/
 │   │   ├── health/
+│   │   ├── ingestion/
 │   │   ├── common/
 │   │   ├── documents/
-│   │   ├── embeddings/
-│   │   ├── ingestion/
 │   │   ├── llm/
 │   │   ├── retrieval/
 │   │   ├── rag/
@@ -240,12 +287,20 @@ engirag-engineering-assistant/
 
 ## Data Sources and Licenses
 
-_Repositories and exact licenses (COVESA Vehicle Signal Specification and NestJS documentation) will be inspected, verified, and documented with access dates in Phase 2 prior to ingestion._
+Repositories and documentation pages were inspected on **2026-11-16**:
+
+| Source | Repository | Published Docs | Source Path | License | Notes |
+| --- | --- | --- | --- | --- | --- |
+| **COVESA Vehicle Signal Specification (VSS)** | [COVESA/vehicle_signal_specification](https://github.com/COVESA/vehicle_signal_specification) | [covesa.github.io/vehicle_signal_specification](https://covesa.github.io/vehicle_signal_specification/) | `docs-gen/content/**/*.md` (20 curated files) | **Mozilla Public License 2.0 (`MPL-2.0`)** | Verified in root `LICENSE` and `docs-gen/content/license/_index.md`. Weak file-level copyleft; permits use and citation when retaining license notice and linking source. |
+| **NestJS Official Documentation** | [nestjs/docs.nestjs.com](https://github.com/nestjs/docs.nestjs.com) | [docs.nestjs.com](https://docs.nestjs.com/) | `content/**/*.md` (16 curated files) | **MIT License (`MIT`)** | Verified in root `LICENSE` and `README.md` (`Copyright (c) 2017-present Kamil Myśliwiec`), explicitly covering software and associated documentation files. |
+
+Only Markdown documentation files listed in `backend/src/ingestion/documentation-sources.ts` are fetched; non-Markdown assets (images/icons) are not redistributed.
 
 ## Attribution
 
-_To be completed in Phase 2 alongside verified license requirements._
+- **COVESA Vehicle Signal Specification** documentation excerpts and citations are sourced from the [COVESA VSS repository](https://github.com/COVESA/vehicle_signal_specification) under **MPL-2.0**.
+- **NestJS Documentation** excerpts and citations are sourced from the [nestjs/docs.nestjs.com repository](https://github.com/nestjs/docs.nestjs.com) under the **MIT License**, Copyright (c) 2017–present Kamil Myśliwiec.
 
 ## Future Improvements
 
-- Phases 2–5: Document ingestion CLI, semantic retrieval + Groq/Gemini `POST /ask`, Vue 3 web UI, and `Hit@k`/`MRR` evaluation experiments.
+- Phases 3–5: Semantic retrieval + Groq/Gemini `POST /ask`, Vue 3 web UI, and `Hit@k`/`MRR` evaluation experiments.
